@@ -1,89 +1,78 @@
 export function buildReportEmail(userData, result) {
+
   const name = userData?.firstName || "there";
 
   return `
   <html>
-    <body style="margin:0;padding:0;background:#f1ece4;font-family:Arial,sans-serif;color:#1a1a1a;">
-      
-      <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;">
-        <tr>
-          <td align="center">
+  <body style="margin:0;background:#dcd4c9;font-family:Arial,Helvetica,sans-serif;">
 
-            <table width="640" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;border:1px solid #e6e1d8;padding:40px;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;">
+  <tr>
+  <td align="center">
 
-              <tr>
-                <td style="text-align:center;padding-bottom:24px;">
-                  <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#ff2846;font-weight:bold;">
-                    FOUND
-                  </div>
-                  <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-top:6px;">
-                    Key Performer Scorecard
-                  </div>
-                </td>
-              </tr>
+  <table width="640" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:10px;padding:40px;">
 
-              <tr>
-                <td>
-                  <h1 style="margin:0 0 16px;font-size:32px;line-height:1.2;">
-                    Your Results
-                  </h1>
+  <tr>
+  <td align="center" style="padding-bottom:10px;">
+  <div style="font-size:13px;letter-spacing:3px;color:#ff2846;font-weight:bold;">
+  FOUND
+  </div>
 
-                  <p style="font-size:16px;line-height:1.6;margin-bottom:20px;">
-                    Hi ${name},
-                  </p>
+  <div style="font-size:12px;letter-spacing:2px;color:#777;margin-top:6px;">
+  KEY PERFORMER SCORECARD
+  </div>
+  </td>
+  </tr>
 
-                  <p style="font-size:16px;line-height:1.6;margin-bottom:20px;">
-                    Thanks for completing the Key Performer Scorecard.
-                  </p>
+  <tr>
+  <td>
 
-                  <p style="font-size:16px;line-height:1.6;margin-bottom:28px;">
-                    Your result category is:
-                  </p>
+  <h1 style="font-size:36px;margin:20px 0;color:#111;">
+  Your Results
+  </h1>
 
-                  <div style="
-                    font-size:28px;
-                    font-weight:bold;
-                    color:#ff2846;
-                    margin-bottom:28px;
-                  ">
-                    ${result?.quadrant || "Result"}
-                  </div>
+  <p style="font-size:16px;margin-bottom:20px;">
+  Hi ${name},
+  </p>
 
-                  <p style="font-size:15px;line-height:1.7;margin-bottom:28px;">
-                    This score reflects the balance between your current performance and future potential.
-                  </p>
+  <p style="font-size:16px;line-height:1.6;margin-bottom:20px;">
+  Thanks for completing the Key Performer Scorecard.
+  </p>
 
-                  <a href="https://foundperform.com" 
-                     style="
-                       display:inline-block;
-                       padding:14px 22px;
-                       background:#ff2846;
-                       color:#ffffff;
-                       text-decoration:none;
-                       border-radius:4px;
-                       font-weight:bold;
-                     ">
-                     Learn more about the Key Performer Programme
-                  </a>
+  <p style="font-size:16px;margin-bottom:25px;">
+  Your result category is:
+  </p>
 
-                </td>
-              </tr>
+  <div style="font-size:34px;font-weight:bold;color:#ff2846;margin-bottom:25px;text-transform:lowercase;">
+  ${result?.quadrant || "result"}
+  </div>
 
-            </table>
+  <p style="font-size:15px;line-height:1.7;margin-bottom:30px;color:#333;">
+  This score reflects the balance between your current performance and future potential.
+  </p>
 
-            <table width="640" cellpadding="0" cellspacing="0" style="margin-top:20px;">
-              <tr>
-                <td style="text-align:center;font-size:12px;color:#999;">
-                  FOUND · Private Markets Performance Coaching
-                </td>
-              </tr>
-            </table>
+  <a href="https://foundperform.com" style="display:inline-block;padding:16px 28px;background:#ff2846;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:bold;font-size:15px;">
+  Learn more about the Key Performer Programme
+  </a>
 
-          </td>
-        </tr>
-      </table>
+  </td>
+  </tr>
 
-    </body>
+  </table>
+
+  <table width="640" cellpadding="0" cellspacing="0" style="margin-top:18px;">
+  <tr>
+  <td align="center" style="font-size:12px;color:#777;">
+  FOUND · Private Markets Performance Coaching
+  </td>
+  </tr>
+  </table>
+
+  </td>
+  </tr>
+  </table>
+
+  </body>
   </html>
   `;
 }
