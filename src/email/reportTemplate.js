@@ -17,7 +17,7 @@ return `
 <tr>
 <td align="center" style="padding-bottom:30px;">
 
-<img src="https://key-performer-scorecard.vercel.app/logo.png" width="140" style="display:block;margin-bottom:10px;" />
+<img src="https://key-performer-scorecard.vercel.app/found-logo.png" width="140" style="display:block;margin-bottom:10px;" />
 
 <div style="font-size:12px;letter-spacing:2px;color:#666;">
 KEY PERFORMER SCORECARD
