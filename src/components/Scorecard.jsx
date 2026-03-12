@@ -59,9 +59,9 @@ function IntroScreen({ onStart }) {
       <div className="intro-hero">
         <p className="intro-eyebrow">Instant results · Tailored report · Personalised insights</p>
         <h1>Are you a <em>key performer</em> in your business?</h1>
-        <p className="intro-sub">Whether you like or not, you are being put in a box. Take the Key Performer Scorecard and benchmark your ability to stand out in a business context. Instant access to your results.</p>
+        <p className="intro-sub">Whether you like it or not, you are being put in a box. Take the Key Performer Scorecard and benchmark your ability to stand out in a business context. Instant access to your results.</p>
         <button className="btn-primary" onClick={onStart}>
-          Discover Performance Score
+          Take the Assessment
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
       </div>
@@ -74,27 +74,27 @@ function IntroScreen({ onStart }) {
               <li>
                 <span className="hiw-num">01</span>
                 <div>
-                  <strong>Research-Based Questions</strong>
-                  <p>22 behaviourally anchored yes/no questions measure your Performance and Potential — the two dimensions that determine whether you are likely in the critical talent pool.</p>
+                  <strong>Two axes. One result.</strong>
+                  <p>22 behaviourally anchored yes/no questions measure your Performance and Potential — the two dimensions that determine whether you are in the critical talent pool.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">02</span>
                 <div>
-                  <strong>Detailed Performance Scores</strong>
-                  <p>Find out if you are a Key Performer, Specialist, Emerging, or At Risk. Each comes with a detailed breakdown across five dimensions of performance.</p>
+                  <strong>Your quadrant placement</strong>
+                  <p>You will be placed in one of four quadrants: Key Performer, Specialist, Emerging, or At Risk. Each comes with a breakdown across five dimensions: Agility, Execution, Ambition, Influence, and Awareness.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">03</span>
                 <div>
-                  <strong>Personalised Insight</strong>
-                  <p>Your results pinpoint exactly where to improve and what to address first.</p>
+                  <strong>A clear next step</strong>
+                  <p>Your result includes honest context about what it means for your career and a tailored recommendation for what to do next.</p>
                 </div>
               </li>
             </ul>
             <button className="btn-primary" onClick={onStart} style={{ marginTop: '2.5rem' }}>
-              Get Your Key Performer Score Now 
+              Find Out Where You Stand
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
@@ -118,7 +118,7 @@ function IntroScreen({ onStart }) {
           ))}
         </div>
         <button className="btn-primary" onClick={onStart}>
-          Discover Performance Score
+          Take the Assessment
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
       </div>
@@ -129,12 +129,15 @@ function IntroScreen({ onStart }) {
 
 // ── LEAD ───────────────────────────────────────────────
 function LeadScreen({ onSubmit }) {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', jobLevel: '', industry: '' });
 
   function handleSubmit() {
     if (!form.firstName || !form.email) { alert('Please enter your name and email to continue.'); return; }
     onSubmit(form);
   }
+
+  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'Director', 'VP / SVP', 'C-Suite / Partner', 'Founder'];
+  const industries = ['Private Equity', 'Venture Capital', 'Investment Banking', 'Consulting', 'Law', 'Asset Management', 'Corporate / In-house', 'Technology', ' Marketing/Sales', 'Other'];
 
   return (
     <div id="screen-lead" className="screen active">
@@ -146,8 +149,24 @@ function LeadScreen({ onSubmit }) {
             <div className="field"><label>First Name</label><input placeholder="Alex" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} /></div>
             <div className="field"><label>Last Name</label><input placeholder="Morgan" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} /></div>
           </div>
-          <div className="field"><label>Work Email</label><input type="email" placeholder="alex@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
+          <div className="field"><label>Email</label><input type="email" placeholder="alex@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
           <div className="field"><label>Phone Number</label><input type="tel" placeholder="+44 7700 000000" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} /></div>
+          <div className="field-row">
+            <div className="field">
+              <label>Job Level</label>
+              <select value={form.jobLevel} onChange={e => setForm({ ...form, jobLevel: e.target.value })}>
+                <option value="">Select level</option>
+                {jobLevels.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Industry</label>
+              <select value={form.industry} onChange={e => setForm({ ...form, industry: e.target.value })}>
+                <option value="">Select industry</option>
+                {industries.map(i => <option key={i} value={i}>{i}</option>)}
+              </select>
+            </div>
+          </div>
           <button className="btn-primary" onClick={handleSubmit} style={{ width: '100%', justifyContent: 'center', marginTop: '.5rem' }}>
             Start the Assessment
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -344,43 +363,29 @@ function ResultsScreen({ userData, result }) {
         </div>
       </div>
 
-      {/* ── 3. WHAT NOW ── */}
-      <div className="what-now">
-        <div className="what-now-inner">
-          <div className="what-now-left">
-            <div className="what-now-eyebrow">Your next step</div>
-            <h2 className="what-now-headline">{q.cta.label}</h2>
-            <p className="what-now-sub">
-              {quadrant === 'key-performer' && 'The professionals who stay at the top are not the ones who work hardest. They are the ones who keep investing in themselves with the same rigour they apply to everything else.'}
-              {quadrant === 'specialist'    && 'Breaking through a plateau requires a different kind of effort, not more of the same. The Key Performer Programme is built for leaders at exactly your stage.'}
-              {quadrant === 'emerging'      && 'Potential without a track record is invisible. The Key Performer Programme helps you build the evidence base that turns promise into permanence.'}
-              {quadrant === 'at-risk'       && 'A 30 minute call with Emily will help you identify what is actually blocking your performance and what a realistic path forward looks like.'}
-            </p>
-          </div>
-          <div className="what-now-right">
-            <div className="what-now-cta-box">
-              <div className="what-now-cta-title">What now?</div>
-              <p className="what-now-cta-desc">Becoming a key performer at work often means changing established habits, which is hard without the right system to help. Which is why we created the Key Performer Programme.</p>
-              <a className="btn-cta" href="https://found.pro/waitlist">
-                Join Waitlist to get Early Access
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </a>
-              <div className="share-section">
-                <p className="share-label">Share your result</p>
-                <button className="share-btn share-copy" onClick={handleCopy}>
-                  {copied ? (
-                    <><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>Link copied</>
-                  ) : (
-                    <><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="1.5"/><path d="M11 5V4a1 1 0 00-1-1H4a1 1 0 00-1 1v6a1 1 0 001 1h1" stroke="currentColor" strokeWidth="1.5"/></svg>Copy link to share</>
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     {/* ── 3. WHAT NOW ── */}
+<div className="what-now">
+  <div className="what-now-inner">
+    <div className="what-now-eyebrow">What now?</div>
 
-      <div className="results-footnote">FOUND · found.pro · Key Performer Scorecard</div>
+    <h2 className="what-now-headline">
+      Becoming a key performer at work often means changing established habits, which is hard without the right system to help.
+    </h2>
+
+    <p className="what-now-copy">
+      Which is why we created the Key Performer Programme. Join the waitlist to get early access to the next cohort.
+    </p>
+
+    <a className="btn-cta" href="https://found.pro/waitlist">
+      Join Waitlist for Early Access
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </a>
+  </div>
+</div>
+
+      <div className="results-footnote">FOUND · foundperform.com · Key Performer Scorecard</div>
     </div>
   );
 }
@@ -390,7 +395,7 @@ export default function Scorecard() {
   const [screen, setScreen]     = useState('intro');
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers]   = useState({
-    agility: [], execution: [], ambition: [], influence: [], awareness: [],
+    perspective: [], pace: [], profile: [], performance: [], progress: [],
   });
   const [userData, setUserData] = useState({});
   const [result, setResult]     = useState(null);
@@ -400,7 +405,7 @@ export default function Scorecard() {
   function handleLeadSubmit(form) {
     setUserData(form);
     setCurrentQ(0);
-    setAnswers({ agility: [], execution: [], ambition: [], influence: [], awareness: [] });
+    setAnswers({ perspective: [], pace: [], profile: [], performance: [], progress: [] });
     setScreen('quiz');
   }
 
