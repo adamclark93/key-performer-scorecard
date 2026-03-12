@@ -410,20 +410,39 @@ export default function Scorecard() {
   }
 
   function handleAnswer(val) {
-    const q = questions[currentQ];
-    const next = currentQ + 1;
-    const newAnswers = {
-      ...answers,
-      [q.dim]: [...(answers[q.dim] || []), val ? 1 : 0],
-    };
-    setAnswers(newAnswers);
-    if (next >= questions.length) {
-      setResult(calculateScores(newAnswers));
-      setScreen('results');
-    } else {
-      setCurrentQ(next);
-    }
+  const q = questions[currentQ];
+  const next = currentQ + 1;
+
+  const newAnswers = {
+    ...answers,
+    [q.dim]: [...(answers[q.dim] || []), val ? 1 : 0],
+  };
+
+  setAnswers(newAnswers);
+
+  if (next >= questions.length) {
+    const finalResult = calculateScores(newAnswers);
+
+    setResult(finalResult);
+    setScreen("results");
+
+    fetch("/api/send-report", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userData,
+        result: finalResult
+      })
+    }).catch((err) => {
+      console.error("Failed to send report email:", err);
+    });
+
+  } else {
+    setCurrentQ(next);
   }
+}
 
   return (
     <>
