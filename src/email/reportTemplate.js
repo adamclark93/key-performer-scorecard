@@ -118,11 +118,10 @@ This is exactly what we help professionals diagnose and address inside the <stro
 <td align="center" style="padding-top:40px;">
 
 <p style="font-size:16px;color:#333;margin-bottom:20px;">
-If you’d like help understanding the fastest way to strengthen your trajectory, you can join the waitlist for the <strong>Key Performer Programme</strong>.
-</p>
+Right now though, if you'd like help understanding what your score means and identifying the fastest way to strengthen your trajectory, you can book a free consultation call with our head performance coach, Emily. Having worked with 1000+ people in your position she willhelp you understand your most impactful next step.
 
 <a href="https://foundperform.com" style="display:inline-block;background:#ff2846;color:#ffffff;text-decoration:none;padding:16px 28px;border-radius:4px;font-weight:bold;font-size:15px;">
-Join the KPP Waitlist
+Book a Free 30- minute Personal Consultation
 </a>
 
 <p style="font-size:13px;color:#777;margin-top:20px;">
