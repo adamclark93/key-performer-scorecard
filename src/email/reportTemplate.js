@@ -136,41 +136,37 @@ export function buildReportEmail(userData, result) {
 
   <!-- CTA -->
   <tr>
-    <td align="center" style="padding-top:40px;">
+<td style="padding-top:40px;">
 
-      <p style="font-size:16px;color:#333;line-height:1.6;margin-bottom:20px;">
-        Right now though, if you'd like help understanding what your score means
-        and identifying the fastest way to strengthen your trajectory, you can
-        book a free consultation call with our head performance coach,
-        <strong>Emily</strong>.
-      </p>
+<table width="100%" cellpadding="0" cellspacing="0" 
+style="background:#f1ece4;border-radius:8px;padding:30px;">
 
-      <p style="font-size:16px;color:#333;line-height:1.6;margin-bottom:25px;">
-        Having worked with <strong>1000+ professionals in high-performance environments</strong>,
-        she will help you understand your most impactful next step.
-      </p>
+<tr>
+<td align="center">
 
-      <a href="https://foundperform.com"
-         style="display:inline-block;background:#ff2846;color:#ffffff;
-                text-decoration:none;padding:16px 30px;border-radius:4px;
-                font-weight:bold;font-size:15px;">
-        Book a Free Scorecard Consultation
-      </a>
+<p style="font-size:16px;color:#333;line-height:1.6;margin-bottom:18px;">
+Right now though, if you'd like help identifying the fastest way to strengthen your trajectory, you can book a free consultation call with our head performance coach, <strong>Emily</strong>.
+</p>
 
-      <p style="font-size:13px;color:#777;margin-top:22px;line-height:1.6;">
-        You'll also receive new insights, an invitation to our private WhatsApp group
-        of similarly ambitious professionals, and early access when the next cohort launches.
-      </p>
+<p style="font-size:16px;color:#333;line-height:1.6;margin-bottom:25px;">
+Having worked with <strong>1000+ professionals in high-performance environments</strong>, she will help you understand your most impactful next step.
+</p>
 
-    </td>
-  </tr>
+<a href="https://foundperform.com"
+style="display:inline-block;background:#ff2846;color:#ffffff;
+text-decoration:none;padding:16px 32px;border-radius:4px;
+font-weight:bold;font-size:15px;">
+Book a Free 30-Minute Consultation
+</a>
 
-  </table>
-  </td>
-  </tr>
-  </table>
+<p style="font-size:13px;color:#777;margin-top:20px;line-height:1.6;">
+You'll also receive new insights, an invitation to our private WhatsApp group of similarly ambitious professionals, and early access when the next cohort launches.
+</p>
 
-  </body>
-  </html>
-  `;
-}
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
