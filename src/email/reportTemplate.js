@@ -170,3 +170,9 @@ You'll also receive new insights, an invitation to our private WhatsApp group of
 
 </td>
 </tr>
+</table>
+
+</body>
+</html>
+`;
+}
