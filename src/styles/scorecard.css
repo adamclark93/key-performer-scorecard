@@ -146,7 +146,7 @@ h1 em { color:var(--red); font-style:italic; }
   border-radius: 8px;
   overflow: hidden;
   min-height: 420px;
-  background: var(--dark-faint);
+  background: #ffff;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -74,22 +74,22 @@ function IntroScreen({ onStart }) {
               <li>
                 <span className="hiw-num">01</span>
                 <div>
-                  <strong>Two axes. One result.</strong>
-                  <p>22 behaviourally anchored yes/no questions measure your Performance and Potential — the two dimensions that determine whether you are in the critical talent pool.</p>
+                  <strong>Research-Based Questions.</strong>
+                  <p>Our assessment features questions derived from research on the key traits for being considered a critical talent at work.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">02</span>
                 <div>
-                  <strong>Your quadrant placement</strong>
-                  <p>You will be placed in one of four quadrants: Key Performer, Specialist, Emerging, or At Risk. Each comes with a breakdown across five dimensions: Agility, Execution, Ambition, Influence, and Awareness.</p>
+                  <strong>Detailed scores</strong>
+                  <p>You will be placed in one of four quadrants: Key Performer, Specialist, Emerging, or At Risk. See which performance metrics are your strengths and weaknesses. </p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">03</span>
                 <div>
-                  <strong>A clear next step</strong>
-                  <p>Your result includes honest context about what it means for your career and a tailored recommendation for what to do next.</p>
+                  <strong>Personalised Report</strong>
+                  <p>Your result includes context about what it means for your career and start improving your performacne in your field.</p>
                 </div>
               </li>
             </ul>
