@@ -152,16 +152,12 @@ Right now though, if you'd like help identifying the fastest way to strengthen y
 Having worked with <strong>1000+ professionals in high-performance environments</strong>, she will help you understand your most impactful next step.
 </p>
 
-<a href="https://foundperform.com"
+<a href="https://calendly.com/found-performance/keyperformer"
 style="display:inline-block;background:#ff2846;color:#ffffff;
 text-decoration:none;padding:16px 32px;border-radius:4px;
 font-weight:bold;font-size:15px;">
 Book a Free 30-Minute Consultation
 </a>
-
-<p style="font-size:13px;color:#777;margin-top:20px;line-height:1.6;">
-You'll also receive new insights, an invitation to our private WhatsApp group of similarly ambitious professionals, and early access when the next cohort launches.
-</p>
 
 </td>
 </tr>
