@@ -291,7 +291,7 @@ h1 em { color:var(--red); font-style:italic; }
 .results-explainer-text { font-size:.88rem; color:var(--dark-dim); line-height:1.85; margin-bottom:1.2rem; }
 
 /* ── QUADRANT GRID ── */
-.quadrant-wrap { width: 100%; }
+.quadrant-wrap { width:100%; display:flex; flex-direction:row; align-items:stretch; gap:.5rem; }
 
 .quadrant-y-label {
   font-size: .55rem;
@@ -302,10 +302,11 @@ h1 em { color:var(--red); font-style:italic; }
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   white-space: nowrap;
-  margin-bottom: .4rem;
+  align-self: center;
+  padding-bottom: 1.4rem;
 }
 
-.quadrant-grid-area { display:flex; flex-direction:column; gap:.4rem; }
+.quadrant-grid-area { display:flex; flex-direction:column; gap:.4rem; flex:1; }
 
 .quadrant-grid {
   display: grid;
@@ -420,22 +421,18 @@ h1 em { color:var(--red); font-style:italic; }
 }
 
 .what-now-inner {
-  max-width: var(--content-w);
+  max-width: 780px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
-.what-now-eyebrow { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:1rem; }
+.what-now-eyebrow { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:700; }
 
-.what-now-headline { font-size:clamp(1.6rem,5vw,3rem); font-weight:700; line-height:1.15; color:#fff; letter-spacing:-.02em; }
+.what-now-headline { font-size:2rem; font-weight:700; line-height:1.2; color:#fff; letter-spacing:-.02em; max-width:680px; }
 
-.what-now-programme-label { font-size:.7rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:1rem; }
-
-.what-now-programme-desc { font-size:.92rem; color:rgba(255,255,255,0.55); line-height:1.85; margin-bottom:1.8rem; border-left:2px solid rgba(255,255,255,0.1); padding-left:1.2rem; }
-
-.what-now-cohort { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:1rem; }
+.what-now-sub { font-size:.88rem; color:rgba(255,255,255,0.45); line-height:1.8; max-width:560px; }
 
 .btn-cta {
   display: inline-flex;
@@ -524,13 +521,6 @@ h1 em { color:var(--red); font-style:italic; }
   }
 
   .subdim-grid { grid-template-columns:repeat(3,1fr); gap:1rem; }
-
-  .what-now-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
 
   .what-now { padding:7rem var(--content-p); }
 
