@@ -17,7 +17,7 @@ export const quadrants = {
     },
   },
   specialist: {
-    label: 'Specialist',
+    label: 'Workhorse',
     color: '#2563eb',
     summary: 'Your current performance is real, but you are optimising within a lane. Strong delivery without the profile or momentum to match will become a ceiling.',
     cta: {
