@@ -1,34 +1,9 @@
-// ── 5P PERFORMANCE FRAMEWORK ──────────────────────────
-// Axes:
-//   performance axis: Profile + Performance + Progress
-//   potential axis:   Perspective + Pace
-
 export const subDims = {
-  perspective: {
-    name: 'Perspective',
-    axis: 'potential',
-    desc: 'How clearly you understand where you create value and how you allocate effort.',
-  },
-  pace: {
-    name: 'Pace',
-    axis: 'potential',
-    desc: 'The energy and intrinsic motivation you bring to your work.',
-  },
-  profile: {
-    name: 'Profile',
-    axis: 'performance',
-    desc: 'How visible and trusted you are inside your organisation.',
-  },
-  performance: {
-    name: 'Performance',
-    axis: 'performance',
-    desc: 'Whether you actually move outcomes and drive results.',
-  },
-  progress: {
-    name: 'Progress',
-    axis: 'performance',
-    desc: 'Career momentum and how the organisation recognises your contribution.',
-  },
+  perspective: { name: 'Perspective', axis: 'potential',   desc: 'How clearly you understand where you create value and how you allocate effort.' },
+  pace:        { name: 'Pace',        axis: 'potential',   desc: 'The energy and intrinsic motivation you bring to your work.' },
+  profile:     { name: 'Profile',     axis: 'performance', desc: 'How visible and trusted you are inside your organisation.' },
+  performance: { name: 'Performance', axis: 'performance', desc: 'Whether you actually move outcomes and drive results.' },
+  progress:    { name: 'Progress',    axis: 'performance', desc: 'Career momentum and how the organisation recognises your contribution.' },
 };
 
 export const questions = [
@@ -70,7 +45,7 @@ export const questions = [
   { dim: 'pace',        text: 'Could you maintain your current workload for the next 3 months?' },
 
   // ── Replaceability ──
-  { dim: 'performance', text: 'Could someone step into your role tomorrow without disruption?' },
+  { dim: 'performance', text: 'Could someone step into your role tomorrow without disruption?', invert: true },
 
   // ── Intrinsic Motivation ──
   { dim: 'pace',        text: 'I chose this career. If the money were equal I would still pick this over something easier.' },

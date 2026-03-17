@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { questions, dims } from '../models/questions';
-import { getTier, getDimTier, calculateScores, getTensionCopy } from '../models/scoring';
+import { questions, subDims } from '../models/questions';
+import { calculateScores, quadrants, getDimRating, getWeakestSubDim, getStrongestSubDim } from '../models/scoring';
 import '../styles/scorecard.css';
 
 function ProgressBar({ pct }) {
@@ -15,32 +15,33 @@ function Nav({ logoHeight = 80 }) {
   return (
     <nav>
       <img src="/found-logo.png" alt="FOUND" style={{ height: logoHeight }} />
-      <div className="nav-label">Performance Scorecard</div>
+      <div className="nav-label">Key Performer Scorecard</div>
     </nav>
   );
 }
 
+// ── INTRO ──────────────────────────────────────────────
 function IntroScreen({ onStart }) {
   const testimonials = [
     {
       name: 'Samantha M.',
       role: 'Principal',
       company: 'The Carlyle Group',
-      quote: 'The use of data and science, combined with her private equity background, made this feel different. Would strongly recommend!',
+      quote: 'The use of data and science, combined with her private equity background, made this feel different. Would strongly recommend.',
       img: '/samantha.jpg',
     },
     {
       name: 'Ollie Q.',
       role: 'Senior Vice President',
       company: 'Coller Capital',
-      quote: 'Working with FOUND has been highly valuable, using the cognitive assessments to bring new insights of where we need to focus, individually and as a team. The coaching then gave us a structured process and practical ways to raise the bar.',
+      quote: 'Working with FOUND has been highly valuable, using the cognitive assessments to bring new insights of where we need to focus, individually and as a team.',
       img: '/ollie.jpg',
     },
     {
       name: 'Thomas C.',
       role: 'Associate',
       company: 'EQT',
-      quote: 'Outstanding coach — supportive, structured, and impactful. Thank you, Emily!',
+      quote: 'Outstanding coach. Supportive, structured, and impactful. Thank you, Emily.',
       img: '/thomas.jpg',
     },
     {
@@ -53,13 +54,14 @@ function IntroScreen({ onStart }) {
   ];
 
   return (
-    <div id="screen-intro" className="screen active" style={{ textAlign: 'center' }}>
+    <div id="screen-intro" className="screen active">
+
       <div className="intro-hero">
-        <p className="intro-benefit-line">Instant results · Tailored report · Personalised insights</p>
-        <h1>How well are you <em>actually</em> performing?</h1>
-        <p className="intro-sub">Take the Performance Scorecard and benchmark your ability to perform in your industry. Instant access to your results.</p>
-        <button className="btn-primary" onClick={onStart} style={{ marginTop: '1.5rem' }}>
-          Discover Performance Score
+        <p className="intro-eyebrow">Instant results · Tailored report · Personalised insights</p>
+        <h1>Are you a <em>key performer</em> in your business?</h1>
+        <p className="intro-sub">Whether you like it or not, you are being put in a box. Take the Key Performer Scorecard and benchmark your ability to stand out in a business context. Instant access to your results.</p>
+        <button className="btn-primary" onClick={onStart}>
+          Take the Assessment
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
       </div>
@@ -69,23 +71,41 @@ function IntroScreen({ onStart }) {
           <div className="hiw-content">
             <h2 className="hiw-title">How it works.</h2>
             <ul className="hiw-list">
-              <li><span className="hiw-arrow">→</span><div><strong>Research-Based Questions</strong><p>25 yes/no statements across 6 performance dimensions — built on validated cognitive and behavioural science.</p></div></li>
-              <li><span className="hiw-arrow">→</span><div><strong>Detailed Performance Scores</strong><p>Receive an overall performance score across key indicators; Mental Performance, Emotional Intelligence, Energy Management, Resilience, Engagement, and Executional.</p></div></li>
-              <li><span className="hiw-arrow">→</span><div><strong>Personalised Insight</strong><p>Your results pinpoint exactly where performance is being left on the table — and what to address first.</p></div></li>
+              <li>
+                <span className="hiw-num">01</span>
+                <div>
+                  <strong>Two axes. One result.</strong>
+                  <p>25 behaviourally anchored yes/no questions measure your Performance and Potential — the two dimensions that determine whether you are in the critical talent pool.</p>
+                </div>
+              </li>
+              <li>
+                <span className="hiw-num">02</span>
+                <div>
+                  <strong>Your quadrant placement</strong>
+                  <p>You will be placed in one of four quadrants: Key Performer, Workhorse, Emerging, or At Risk. Each comes with a breakdown across five dimensions: Perspective, Pace, Profile, Performance, and Progress.</p>
+                </div>
+              </li>
+              <li>
+                <span className="hiw-num">03</span>
+                <div>
+                  <strong>A clear next step</strong>
+                  <p>Your result includes honest context about what it means for your career and a tailored recommendation for what to do next.</p>
+                </div>
+              </li>
             </ul>
             <button className="btn-primary" onClick={onStart} style={{ marginTop: '2.5rem' }}>
-              Get Your Performance Score Now
+              Find Out Where You Stand
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
           <div className="hiw-image">
-            <img src="/how-it-works.png" alt="How it works" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '6px' }} />
+            <img src="/how-it-works.png" alt="How it works" />
           </div>
         </div>
       </div>
 
       <div className="social-proof">
-        <h2 className="proof-heading">500+ professionals have worked with FOUND</h2>
+        <h2 className="proof-heading">500+ senior professionals have worked with FOUND</h2>
         <div className="testimonial-grid">
           {testimonials.map((t) => (
             <div key={t.name} className="testimonial-card">
@@ -97,67 +117,83 @@ function IntroScreen({ onStart }) {
             </div>
           ))}
         </div>
-        <div style={{ marginTop: '3rem' }}>
-          <button className="btn-primary" onClick={onStart}>
-            Discover Performance Score
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-        </div>
+        <button className="btn-primary" onClick={onStart}>
+          Take the Assessment
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
       </div>
+
     </div>
   );
 }
 
+// ── LEAD ───────────────────────────────────────────────
 function LeadScreen({ onSubmit }) {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', jobLevel: '', industry: '' });
 
   function handleSubmit() {
     if (!form.firstName || !form.email) { alert('Please enter your name and email to continue.'); return; }
     onSubmit(form);
   }
 
+  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'Director', 'VP / SVP', 'C-Suite / Partner', 'Founder'];
+  const industries = ['Private Equity', 'Venture Capital', 'Investment Banking', 'Consulting', 'Law', 'Asset Management', 'Corporate / In-house', 'Technology', 'Other'];
+
   return (
     <div id="screen-lead" className="screen active">
       <div className="lead-outer">
         <div className="lead-box">
-          <h2>Enter your details to start the scorecard</h2>
-          <p>We'll send your results and personalised insights directly to your inbox.</p>
+          <h2>Enter your details to start</h2>
+          <p>We will send your results and a personalised breakdown directly to your inbox.</p>
           <div className="field-row">
             <div className="field"><label>First Name</label><input placeholder="Alex" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} /></div>
             <div className="field"><label>Last Name</label><input placeholder="Morgan" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} /></div>
           </div>
-          <div className="field"><label>Work Email</label><input type="email" placeholder="alex@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
+          <div className="field"><label>Email</label><input type="email" placeholder="alex@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
           <div className="field"><label>Phone Number</label><input type="tel" placeholder="+44 7700 000000" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} /></div>
-          <button className="btn-primary" onClick={handleSubmit} style={{ width: '100%', justifyContent: 'center', marginTop: '.5rem' }}>Discover Your Score Now →</button>
-          <p className="privacy">By continuing you agree to our <a href="/privacy" target="_blank" className="privacy-link">Privacy Policy</a>. We'll send your results and may follow up with relevant insights. Unsubscribe anytime.</p>
+          <div className="field-row">
+            <div className="field">
+              <label>Job Level</label>
+              <select value={form.jobLevel} onChange={e => setForm({ ...form, jobLevel: e.target.value })}>
+                <option value="">Select level</option>
+                {jobLevels.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Industry</label>
+              <select value={form.industry} onChange={e => setForm({ ...form, industry: e.target.value })}>
+                <option value="">Select industry</option>
+                {industries.map(i => <option key={i} value={i}>{i}</option>)}
+              </select>
+            </div>
+          </div>
+          <button className="btn-primary" onClick={handleSubmit} style={{ width: '100%', justifyContent: 'center', marginTop: '.5rem' }}>
+            Start the Assessment
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          <p className="privacy">By continuing you agree to our <a href="/privacy" target="_blank" className="privacy-link">Privacy Policy</a>. We will send your results and may follow up with relevant insights. Unsubscribe anytime.</p>
         </div>
       </div>
     </div>
   );
 }
 
+// ── QUIZ ───────────────────────────────────────────────
 function QuizScreen({ currentQ, onAnswer }) {
   const q = questions[currentQ];
-  const pct = (currentQ / questions.length) * 100;
+  const pct = Math.round(((currentQ) / questions.length) * 100);
+
   return (
     <div id="screen-quiz" className="screen active">
       <ProgressBar pct={pct} />
-      <div className="quiz-header">
-        <img src="/found-logo.png" alt="FOUND" style={{ height: 64 }} />
-        <div className="q-meta">Question <span>{currentQ + 1}</span> of {questions.length}</div>
-      </div>
-      <div className="quiz-body">
-        <div className="question-card">
-          <div className="q-text">{q.text}</div>
-          <div className="q-answers">
-            <button className="q-btn yes" onClick={() => onAnswer(true)}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              Yes
-            </button>
-            <button className="q-btn no" onClick={() => onAnswer(false)}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              No
-            </button>
+      <Nav />
+      <div className="quiz-outer">
+        <div className="quiz-inner">
+          <div className="quiz-counter">{currentQ + 1} / {questions.length}</div>
+          <div className="quiz-question">{q.text}</div>
+          <div className="quiz-buttons">
+            <button className="btn-yes" onClick={() => onAnswer(true)}>Yes</button>
+            <button className="btn-no"  onClick={() => onAnswer(false)}>No</button>
           </div>
         </div>
       </div>
@@ -165,10 +201,48 @@ function QuizScreen({ currentQ, onAnswer }) {
   );
 }
 
-function DimCard({ dimKey, score, isLowest }) {
-  const d = dims[dimKey];
-  const t = getDimTier(score);
+// ── QUADRANT GRID ──────────────────────────────────────
+function QuadrantGrid({ quadrant }) {
+  const cells = [
+    { key: 'emerging',      label: 'Emerging',      col: 1, row: 1 },
+    { key: 'key-performer', label: 'Key Performer',  col: 2, row: 1 },
+    { key: 'at-risk',       label: 'At Risk',        col: 1, row: 2 },
+    { key: 'specialist',    label: 'Workhorse',      col: 2, row: 2 },
+  ];
+
+  return (
+    <div className="quadrant-wrap">
+      <div className="quadrant-y-label">Potential</div>
+      <div className="quadrant-grid-area">
+        <div className="quadrant-grid">
+          {cells.map(c => (
+            <div
+              key={c.key}
+              className={`quadrant-cell ${c.key === quadrant ? 'active' : ''}`}
+              style={{ gridColumn: c.col, gridRow: c.row }}
+            >
+              <span className="quadrant-cell-label">{c.label}</span>
+              {c.key === quadrant && <span className="quadrant-dot">● You</span>}
+            </div>
+          ))}
+        </div>
+        <div className="quadrant-x-axis">
+          <span className="quadrant-x-low">Low</span>
+          <span className="quadrant-x-label">Performance</span>
+          <span className="quadrant-x-high">High</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── SUB-DIMENSION CARD ─────────────────────────────────
+function SubDimCard({ dimKey, score, isWeakest, isStrongest }) {
+  const d = subDims[dimKey];
   const barRef = useRef(null);
+  const rating = getDimRating(score);
+  const color = isWeakest ? '#ff2846' : isStrongest ? '#16a34a' : '#1a1a1a';
+  const ratingColor = isWeakest ? '#ff2846' : isStrongest ? '#16a34a' : rating.color;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -176,223 +250,171 @@ function DimCard({ dimKey, score, isLowest }) {
         barRef.current.style.transition = 'width 1.2s cubic-bezier(.4,0,.2,1)';
         barRef.current.style.width = `${score}%`;
       }
-    }, 400);
+    }, 300);
     return () => clearTimeout(timer);
   }, [score]);
 
   return (
-    <div className={`dim-card ${isLowest ? 'dim-card-focus' : ''}`} style={{ borderLeftColor: t.color }}>
-      <div className="dim-card-top">
-        <div className="dim-name">{d.name}</div>
-        <div className="dim-score-num" style={{ color: t.color }}>{score}%</div>
+    <div className="subdim-card">
+      <div className="subdim-card-header">
+        <div className="subdim-card-name" style={{ color }}>{d.name}</div>
+        {isWeakest   && <span className="subdim-tag subdim-tag-weak">Biggest opportunity</span>}
+        {isStrongest && <span className="subdim-tag subdim-tag-strong">Strongest signal</span>}
       </div>
-      <div className="dim-desc">{d.desc}</div>
-      <div className="dim-bar-wrap">
-        <div ref={barRef} className="dim-bar" style={{ width: 0, background: t.color }} />
+      <div className="subdim-card-desc">{d.desc}</div>
+      <div className="subdim-bar-wrap">
+        <div ref={barRef} className="subdim-bar" style={{ width: 0, background: color }} />
       </div>
-      <div className="dim-footer">
-        <span className="dim-label" style={{ color: t.color }}>{t.label}</span>
-        {isLowest && <span className="dim-focus-tag">Focus here first</span>}
-      </div>
-    </div>
-  );
-}
-
-function Donut({ overall }) {
-  const r = 126;
-  const circ = 2 * Math.PI * r;
-  const [offset, setOffset] = useState(circ);
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOffset(circ - (circ * overall / 100));
-      const start = performance.now();
-      const duration = 1500;
-      function step(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
-        setDisplay(Math.round(ease * overall));
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [overall]);
-
-  const size = 280;
-  const cx = size / 2;
-
-  return (
-    <div className="donut-wrap">
-      <svg className="donut-svg" width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-        <circle className="donut-bg" cx={cx} cy={cx} r={r} strokeWidth="10" />
-        <circle className="donut-fill" cx={cx} cy={cx} r={r} strokeWidth="10"
-          strokeDasharray={circ} strokeDashoffset={offset}
-          style={{ transition: 'stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1)' }} />
-      </svg>
-      <div className="donut-center">
-        <div className="donut-pct">{display}%</div>
-        <div className="donut-lbl">Overall</div>
+      <div className="subdim-card-score-row">
+        <div className="subdim-card-score" style={{ color }}>Score {rating.score}/5</div>
+        <div className="subdim-card-rating" style={{ color: ratingColor }}>{rating.label}</div>
       </div>
     </div>
   );
 }
 
-function ResultsScreen({ userData, scores, overall, isTeamLead, onRetake }) {
-  const tier = getTier(overall);
-  const { line, sub } = getTensionCopy(overall, scores, dims);
+// ── RESULTS ────────────────────────────────────────────
+function ResultsScreen({ userData, result }) {
+  const { quadrant, overallPct, subScores } = result;
+  const q = quadrants[quadrant];
+  const weakest   = getWeakestSubDim(subScores);
+  const strongest = getStrongestSubDim(subScores);
   const [copied, setCopied] = useState(false);
 
-  const lowestDim = Object.keys(scores).sort((a, b) => scores[a] - scores[b])[0];
-
   function handleCopy() {
-    navigator.clipboard.writeText('https://found.pro/scorecard').then(() => {
+    navigator.clipboard.writeText('https://found.pro/key-performer').then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     });
   }
 
-  const dimGroups = [
-    { label: 'Ability',   keys: ['cognitive', 'emotional'] },
-    { label: 'Capacity',  keys: ['physiology', 'resilience'] },
-    { label: 'Execution', keys: ['engagement', 'appraisal'] },
-  ];
+  const name = userData.firstName ? `, ${userData.firstName}` : '';
 
   return (
     <div id="screen-results" className="screen active">
       <ProgressBar pct={100} />
       <Nav logoHeight={64} />
 
-      {/* ── HERO ── */}
+      {/* ── 1. QUADRANT REVEAL ── */}
       <div className="results-hero">
         <div className="results-hero-inner">
-
-          {/* LEFT */}
           <div className="results-hero-left">
-            <div className="results-eyebrow">Your Results</div>
-            <h2 className="results-thanks">
-              Thank you for completing the FOUND Performance Scorecard{userData.firstName ? `, ${userData.firstName}` : ''}.
-            </h2>
-            <p className="results-explainer-text">
-              We've scored your responses across 6 performance dimensions, each out of 100%. Your results reflect how consistently the habits, behaviours and conditions that drive high performance are present in your working life right now.
-            </p>
-            <p className="results-explainer-text">
-              Above 80% is high performance. 60–80% is strong. 40–60% is developing. Below 40% signals areas that may be limiting your output.
-            </p>
-            <div className="results-legend">
-              <div className="legend-item"><span className="legend-dot" style={{background:'#16a34a'}} />High Strength (75%+)</div>
-              <div className="legend-item"><span className="legend-dot" style={{background:'#2563eb'}} />Average to High (50–74%)</div>
-              <div className="legend-item"><span className="legend-dot" style={{background:'#d97706'}} />Low to Average (25–49%)</div>
-              <div className="legend-item"><span className="legend-dot" style={{background:'#ff2846'}} />Needs Attention (0–24%)</div>
-            </div>
+            <div className="results-eyebrow">Your Result</div>
+            <h2 className="results-quadrant-name" style={{ color: q.color }}>{q.label}</h2>
+            {name && <p className="results-thanks-sub">Here is your breakdown{name}.</p>}
+            <p className="results-explainer-text">{q.summary}</p>
           </div>
-
-          {/* RIGHT */}
           <div className="results-hero-right">
-            <Donut overall={overall} />
-            <p className="results-sub">Based on 6 performance dimensions</p>
+            <QuadrantGrid quadrant={quadrant} />
           </div>
-
         </div>
       </div>
 
-      {/* ── DIMENSIONS ── */}
-      <div className="results-body">
-        {dimGroups.map(group => (
-          <div key={group.label} className="dim-group">
-            <div className="results-section-label">{group.label}</div>
-            <div className="dim-grid">
-              {group.keys.map(d => <DimCard key={d} dimKey={d} score={scores[d]} isLowest={d === lowestDim} />)}
-            </div>
+      {/* ── 2. SCORING EXPLAINER ── */}
+      <div className="scoring-explainer">
+        <div className="scoring-explainer-inner">
+          <p className="scoring-explainer-text">
+            We have scored your answers across five dimensions giving you a score out of 5.
+            A score of <strong>5 is high</strong>, <strong>3–4 is average</strong>, and <strong>1–2 is low</strong>.
+          </p>
+          <div className="scoring-overall">
+            <div className="scoring-overall-label">Your Overall Score</div>
+            <div className="scoring-overall-value" style={{ color: q.color }}>{overallPct}%</div>
           </div>
-        ))}
+          <div className="scoring-legend">
+            <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low Strength &nbsp;1–2</span>
+            <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength &nbsp;3–4</span>
+            <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength &nbsp;5</span>
+          </div>
+        </div>
       </div>
 
-      {/* ── WHAT NOW ── */}
+      {/* ── 3. FIVE DIMENSIONS ── */}
+      <div className="results-body">
+        <div className="results-section-label">Your Five Dimensions</div>
+        <div className="subdim-grid">
+          {Object.keys(subDims).map(key => (
+            <SubDimCard
+              key={key}
+              dimKey={key}
+              score={subScores[key]}
+              isWeakest={key === weakest}
+              isStrongest={key === strongest}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ── 4. WHAT NOW ── */}
       <div className="what-now">
         <div className="what-now-inner">
           <div className="what-now-left">
-            <div className="what-now-eyebrow">What this means</div>
-            <h2 className="what-now-line">{line}</h2>
-            <p className="what-now-sub">{sub}</p>
+            <div className="what-now-eyebrow">What now?</div>
+            <h2 className="what-now-headline">
+              {quadrant === 'key-performer' && <>You are operating at the top.<br />The question is what keeps you there.</>}
+              {quadrant === 'specialist'    && <>You are delivering.<br />But the right people are not seeing it.</>}
+              {quadrant === 'emerging'      && <>The potential is clear.<br />The track record is not there yet.</>}
+              {quadrant === 'at-risk'       && <>Something is getting in the way.<br />Let us find out what.</>}
+            </h2>
           </div>
           <div className="what-now-right">
-            <div className="what-now-cta-box">
-              <div className="what-now-cta-label">Your next step</div>
-              <p className="what-now-cta-desc">Book a free 30-minute discovery call with Emily to walk through your results and identify where to focus first.</p>
-              <a className="btn-cta" href="#">
-                {isTeamLead ? 'Book a Free Brain Capital Assessment' : 'Book a Free Discovery Call'}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </a>
-              <div className="share-section">
-                <p className="share-label">Share your score</p>
-                <button className="share-btn share-copy" onClick={handleCopy}>
-                  {copied ? (
-                    <><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>Link copied!</>
-                  ) : (
-                    <><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="1.5"/><path d="M11 5V4a1 1 0 00-1-1H4a1 1 0 00-1 1v6a1 1 0 001 1h1" stroke="currentColor" strokeWidth="1.5"/></svg>Copy link to share</>
-                  )}
-                </button>
-              </div>
-            </div>
+            <p className="what-now-programme-label">The Key Performer Programme</p>
+            <p className="what-now-programme-desc">Most professionals know what they should be doing differently. Very few have the system to actually change it. The Key Performer Programme is a structured 90–180 day experience built around the 5P framework — designed to close the gap between where you are and where you should be operating.</p>
+            <div className="what-now-cohort">Next cohort opening soon</div>
+            <a className="btn-cta" href="https://found.pro/waitlist">
+              Join the Waitlist for Early Access
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="results-footnote">FOUND · found.pro · Cognitive Performance Diagnostics</div>
+      <div className="results-footnote">FOUND · found.pro · Key Performer Scorecard</div>
     </div>
   );
 }
 
+// ── APP ────────────────────────────────────────────────
 export default function Scorecard() {
-  const [screen, setScreen] = useState('intro');
+  const [screen, setScreen]     = useState('intro');
   const [currentQ, setCurrentQ] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [isTeamLead, setIsTeamLead] = useState(false);
+  const [answers, setAnswers]   = useState({
+    perspective: [], pace: [], profile: [], performance: [], progress: [],
+  });
   const [userData, setUserData] = useState({});
-  const [results, setResults] = useState(null);
+  const [result, setResult]     = useState(null);
 
-  function handleStartClick() { setScreen('lead'); }
+  function handleStart() { setScreen('lead'); }
 
   function handleLeadSubmit(form) {
     setUserData(form);
     setCurrentQ(0);
-    setAnswers({});
+    setAnswers({ perspective: [], pace: [], profile: [], performance: [], progress: [] });
     setScreen('quiz');
   }
 
   function handleAnswer(val) {
     const q = questions[currentQ];
-    let newAnswers = { ...answers };
-    if (q.routing) {
-      setIsTeamLead(val);
-    } else {
-      newAnswers = { ...answers, [q.dim]: [...(answers[q.dim] || []), val ? 1 : 0] };
-      setAnswers(newAnswers);
-    }
     const next = currentQ + 1;
+    const newAnswers = {
+      ...answers,
+      [q.dim]: [...(answers[q.dim] || []), val ? 1 : 0],
+    };
+    setAnswers(newAnswers);
     if (next >= questions.length) {
-      const { scores, overall } = calculateScores(newAnswers, dims);
-      setResults({ scores, overall });
+      setResult(calculateScores(newAnswers));
       setScreen('results');
     } else {
       setCurrentQ(next);
     }
   }
 
-  function handleRetake() {
-    setCurrentQ(0); setAnswers({}); setIsTeamLead(false); setResults(null); setScreen('intro');
-  }
-
   return (
     <>
-      {screen === 'intro' && (<><Nav /><IntroScreen onStart={handleStartClick} /></>)}
-      {screen === 'lead' && (<><Nav /><LeadScreen onSubmit={handleLeadSubmit} /></>)}
-      {screen === 'quiz' && (<QuizScreen currentQ={currentQ} onAnswer={handleAnswer} />)}
-      {screen === 'results' && results && (
-        <ResultsScreen userData={userData} scores={results.scores} overall={results.overall} isTeamLead={isTeamLead} onRetake={handleRetake} />
-      )}
+      {screen === 'intro'   && (<><Nav /><IntroScreen onStart={handleStart} /></>)}
+      {screen === 'lead'    && (<><Nav /><LeadScreen onSubmit={handleLeadSubmit} /></>)}
+      {screen === 'quiz'    && <QuizScreen currentQ={currentQ} onAnswer={handleAnswer} />}
+      {screen === 'results' && result && <ResultsScreen userData={userData} result={result} />}
     </>
   );
 }

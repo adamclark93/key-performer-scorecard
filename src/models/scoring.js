@@ -48,22 +48,31 @@ export const quadrants = {
   },
 };
 
-// ── SCORING ────────────────────────────────────────────
-// Count yes answers per dimension, convert to percentage of max possible.
-// Max per dim = number of questions in that dim.
+// ── DIM RATING ─────────────────────────────────────────
+// Converts a dimension % score to a score out of 5 + strength label
+// 5     = High Strength
+// 3–4   = Average Strength
+// 1–2   = Low Strength
 
-function dimMax(dim) {
-  return questions.filter(q => q.dim === dim).length;
+export function getDimRating(pct) {
+  const score = Math.max(1, Math.round((pct / 100) * 5));
+  if (score === 5) return { score, label: 'High Strength',    color: '#16a34a' };
+  if (score >= 3)  return { score, label: 'Average Strength', color: '#d97706' };
+  return                  { score, label: 'Low Strength',     color: '#ff2846' };
 }
 
-export function calculateScores(answers) {
-  // answers: { perspective: [1,0,...], pace: [...], profile: [...], performance: [...], progress: [...] }
+// ── SCORING ────────────────────────────────────────────
+// Count yes answers per dimension, convert to % of max possible.
+// Max per dim = number of questions in that dim.
 
+export function calculateScores(answers) {
   const subScores = {};
   for (const dim of Object.keys(subDims)) {
     const dimQuestions = questions.filter(q => q.dim === dim);
-const raw = (answers[dim] || []).reduce((sum, val, i) => sum + (dimQuestions[i]?.invert ? (val === 1 ? 0 : 1) : val), 0);
-    const max  = dimMax(dim);
+    const raw = (answers[dim] || []).reduce((sum, val, i) => {
+      return sum + (dimQuestions[i]?.invert ? (val === 1 ? 0 : 1) : val);
+    }, 0);
+    const max = dimQuestions.length;
     subScores[dim] = max > 0 ? Math.round((raw / max) * 100) : 0;
   }
 
@@ -77,6 +86,11 @@ const raw = (answers[dim] || []).reduce((sum, val, i) => sum + (dimQuestions[i]?
     (subScores.perspective + subScores.pace) / 2
   );
 
+  // Overall % = average of all 5 dimension scores
+  const overallPct = Math.round(
+    Object.values(subScores).reduce((a, b) => a + b, 0) / Object.values(subScores).length
+  );
+
   // Quadrant placement (threshold 50%)
   const highPerf = performancePct >= 50;
   const highPot  = potentialPct  >= 50;
@@ -87,7 +101,7 @@ const raw = (answers[dim] || []).reduce((sum, val, i) => sum + (dimQuestions[i]?
   else if ( highPerf && !highPot) quadrant = 'specialist';
   else                            quadrant = 'at-risk';
 
-  return { quadrant, performancePct, potentialPct, subScores };
+  return { quadrant, performancePct, potentialPct, overallPct, subScores };
 }
 
 // ── HELPERS ────────────────────────────────────────────
