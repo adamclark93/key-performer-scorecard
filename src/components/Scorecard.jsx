@@ -338,14 +338,14 @@ function ResultsScreen({ userData, result }) {
           <div className="what-now-eyebrow">What Now?</div>
           <h2 className="what-now-headline">Understanding your constraints is the first step to becoming a Key Performer.</h2>
           <p className="what-now-sub">Being good is no longer enough to stand out. You now have a clearer picture of what might be holding you back — but taking action is what matters.</p>
-          <a className="btn-cta" href="https://found.pro/waitlist">
+          <a className="btn-cta" href="https://calendly.com/found-performance/keyperformer">
             Discover How You Can Improve
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
         </div>
       </div>
 
-      <div className="results-footnote">FOUND · found.pro · Key Performer Scorecard</div>
+      <div className="results-footnote">FOUND · foundperform.com · Key Performer Scorecard</div>
     </div>
   );
 }
