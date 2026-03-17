@@ -295,14 +295,7 @@ function ResultsScreen({ userData, result }) {
             <h2 className="results-quadrant-name" style={{ color: q.color }}>{q.label}</h2>
             {name && <p className="results-thanks-sub">Here is your breakdown{name}.</p>}
             <p className="results-explainer-text">{q.summary}</p>
-          </div>
-          <div className="results-hero-right">
-            <QuadrantGrid quadrant={quadrant} />
-            <div style={{ textAlign: 'center', marginTop: '1.5rem', width: '100%' }}>
-              <div style={{ fontSize: '.65rem', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(26,26,26,0.35)', marginBottom: '.4rem' }}>Your Overall Score</div>
-              <div style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-.02em', color: q.color, lineHeight: 1 }}>{overallPct}%</div>
-            </div>
-            <div style={{ marginTop: '1.5rem', width: '100%' }}>
+            <div style={{ marginTop: '1.5rem' }}>
               <p style={{ fontSize: '.82rem', color: 'rgba(26,26,26,0.5)', marginBottom: '.8rem' }}>
                 We have scored your answers across five dimensions giving you a score out of 5.
               </p>
@@ -311,6 +304,13 @@ function ResultsScreen({ userData, result }) {
                 <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength</span>
                 <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength</span>
               </div>
+            </div>
+          </div>
+          <div className="results-hero-right">
+            <QuadrantGrid quadrant={quadrant} />
+            <div style={{ textAlign: 'center', marginTop: '1.5rem', width: '100%' }}>
+              <div style={{ fontSize: '.65rem', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(26,26,26,0.35)', marginBottom: '.4rem' }}>Your Overall Score</div>
+              <div style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-.02em', color: q.color, lineHeight: 1 }}>{overallPct}%</div>
             </div>
           </div>
         </div>
