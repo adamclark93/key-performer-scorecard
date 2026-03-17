@@ -420,18 +420,16 @@ h1 em { color:var(--red); font-style:italic; }
 }
 
 .what-now-inner {
-  max-width: 780px;
+  max-width: var(--content-w);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
 .what-now-eyebrow { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:1rem; }
 
-.what-now-sub { font-size:.88rem; color:rgba(255,255,255,0.45); line-height:1.8; max-width:560px; }
-
-.what-now-headline { font-size:2rem; font-weight:700; line-height:1.2; color:#fff; letter-spacing:-.02em; max-width:680px; }
+.what-now-headline { font-size:clamp(1.6rem,5vw,3rem); font-weight:700; line-height:1.15; color:#fff; letter-spacing:-.02em; }
 
 .what-now-programme-label { font-size:.7rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:1rem; }
 
