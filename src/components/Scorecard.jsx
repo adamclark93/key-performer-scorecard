@@ -298,7 +298,7 @@ function ResultsScreen({ userData, result }) {
           </div>
           <div className="results-hero-right">
             <QuadrantGrid quadrant={quadrant} />
-            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <div style={{ textAlign: 'center', marginTop: '1.5rem', width: '100%' }}>
               <div style={{ fontSize: '.65rem', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(26,26,26,0.35)', marginBottom: '.4rem' }}>Your Overall Score</div>
               <div style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-.02em', color: q.color, lineHeight: 1 }}>{overallPct}%</div>
             </div>
