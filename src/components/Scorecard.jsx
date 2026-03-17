@@ -74,21 +74,21 @@ function IntroScreen({ onStart }) {
               <li>
                 <span className="hiw-num">01</span>
                 <div>
-                  <strong>Two axes. One result.</strong>
+                  <strong>Research Based Questions</strong>
                   <p>25 behaviourally anchored yes/no questions measure your Performance and Potential — the two dimensions that determine whether you are in the critical talent pool.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">02</span>
                 <div>
-                  <strong>Your quadrant placement</strong>
+                  <strong>Detailed Performance Scores</strong>
                   <p>You will be placed in one of four quadrants: Key Performer, Workhorse, Emerging, or At Risk. Each comes with a breakdown across five dimensions: Perspective, Pace, Profile, Performance, and Progress.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">03</span>
                 <div>
-                  <strong>A clear next step</strong>
+                  <strong>Personalised Report</strong>
                   <p>Your result includes honest context about what it means for your career and a tailored recommendation for what to do next.</p>
                 </div>
               </li>
@@ -98,7 +98,7 @@ function IntroScreen({ onStart }) {
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
-          <div className="hiw-image">
+          <div className="hiw-image" style={{ background: '#fff', borderRadius: '8px', padding: '2rem' }}>
             <img src="/how-it-works.png" alt="How it works" />
           </div>
         </div>
@@ -279,14 +279,6 @@ function ResultsScreen({ userData, result }) {
   const q = quadrants[quadrant];
   const weakest   = getWeakestSubDim(subScores);
   const strongest = getStrongestSubDim(subScores);
-  const [copied, setCopied] = useState(false);
-
-  function handleCopy() {
-    navigator.clipboard.writeText('https://found.pro/key-performer').then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    });
-  }
 
   const name = userData.firstName ? `, ${userData.firstName}` : '';
 
@@ -306,6 +298,10 @@ function ResultsScreen({ userData, result }) {
           </div>
           <div className="results-hero-right">
             <QuadrantGrid quadrant={quadrant} />
+            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <div style={{ fontSize: '.65rem', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(26,26,26,0.35)', marginBottom: '.4rem' }}>Your Overall Score</div>
+              <div style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-.02em', color: q.color, lineHeight: 1 }}>{overallPct}%</div>
+            </div>
           </div>
         </div>
       </div>
@@ -315,16 +311,11 @@ function ResultsScreen({ userData, result }) {
         <div className="scoring-explainer-inner">
           <p className="scoring-explainer-text">
             We have scored your answers across five dimensions giving you a score out of 5.
-            A score of <strong>5 is high</strong>, <strong>3–4 is average</strong>, and <strong>1–2 is low</strong>.
           </p>
-          <div className="scoring-overall">
-            <div className="scoring-overall-label">Your Overall Score</div>
-            <div className="scoring-overall-value" style={{ color: q.color }}>{overallPct}%</div>
-          </div>
           <div className="scoring-legend">
-            <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low Strength &nbsp;1–2</span>
-            <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength &nbsp;3–4</span>
-            <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength &nbsp;5</span>
+            <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low Strength</span>
+            <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength</span>
+            <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength</span>
           </div>
         </div>
       </div>
@@ -402,8 +393,16 @@ export default function Scorecard() {
     };
     setAnswers(newAnswers);
     if (next >= questions.length) {
-      setResult(calculateScores(newAnswers));
+      const finalResult = calculateScores(newAnswers);
+      setResult(finalResult);
       setScreen('results');
+      fetch('/api/send-report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userData, result: finalResult }),
+      }).catch((err) => {
+        console.error('Failed to send report email:', err);
+      });
     } else {
       setCurrentQ(next);
     }

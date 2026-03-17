@@ -684,7 +684,7 @@ h1 em { color:var(--red); font-style:italic; }
 }
 
 /* ── SCORING EXPLAINER ── */
-.scoring-explainer { background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:2.4rem var(--content-p); }
+.scoring-explainer { background:var(--bg); padding:2.4rem var(--content-p); }
 .scoring-explainer-inner { max-width:var(--content-w); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:3rem; flex-wrap:wrap; }
 .scoring-explainer-left { display:flex; flex-direction:column; gap:1.2rem; flex:1; }
 .scoring-explainer-body { font-size:.9rem; color:rgba(26,26,26,0.55); line-height:1.75; max-width:540px; }
