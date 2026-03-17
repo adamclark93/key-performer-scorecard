@@ -302,23 +302,20 @@ function ResultsScreen({ userData, result }) {
               <div style={{ fontSize: '.65rem', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(26,26,26,0.35)', marginBottom: '.4rem' }}>Your Overall Score</div>
               <div style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-.02em', color: q.color, lineHeight: 1 }}>{overallPct}%</div>
             </div>
+            <div style={{ marginTop: '1.5rem', width: '100%' }}>
+              <p style={{ fontSize: '.82rem', color: 'rgba(26,26,26,0.5)', marginBottom: '.8rem' }}>
+                We have scored your answers across five dimensions giving you a score out of 5.
+              </p>
+              <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low Strength</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ── 2. SCORING EXPLAINER ── */}
-      <div className="scoring-explainer">
-        <div className="scoring-explainer-inner">
-          <p className="scoring-explainer-text">
-            We have scored your answers across five dimensions giving you a score out of 5.
-          </p>
-          <div className="scoring-legend">
-            <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low Strength</span>
-            <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength</span>
-            <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength</span>
-          </div>
-        </div>
-      </div>
 
       {/* ── 3. FIVE DIMENSIONS ── */}
       <div className="results-body">
