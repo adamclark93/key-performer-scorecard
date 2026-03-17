@@ -329,17 +329,7 @@ function ResultsScreen({ userData, result }) {
             <h2 className="results-quadrant-name" style={{ color: q.color }}>{q.label}</h2>
             {name && <p className="results-thanks-sub">Here is your breakdown{name}.</p>}
             <p className="results-explainer-text">{q.summary}</p>
-            <div className="results-axis-scores">
-              <div className="axis-score-item">
-                <div className="axis-score-label">Performance</div>
-                <div className="axis-score-value" style={{ color: '#2563eb' }}>{performancePct}%</div>
-              </div>
-              <div className="axis-score-divider" />
-              <div className="axis-score-item">
-                <div className="axis-score-label">Potential</div>
-                <div className="axis-score-value" style={{ color: '#8b5cf6' }}>{potentialPct}%</div>
-              </div>
-            </div>
+            
           </div>
           <div className="results-hero-right">
             <QuadrantGrid quadrant={quadrant} />
