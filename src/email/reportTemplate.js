@@ -1,7 +1,7 @@
 export function buildReportEmail(userData, result) {
 
   const name = userData?.firstName || "there";
-  const score = result?.score || "78";
+  const score = result?.overallPct ?? result?.score ?? 0;
 
   return `
   <html>
