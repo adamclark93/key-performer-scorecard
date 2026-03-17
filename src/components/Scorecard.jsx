@@ -335,28 +335,16 @@ function ResultsScreen({ userData, result }) {
       {/* ── 4. WHAT NOW ── */}
       <div className="what-now">
         <div className="what-now-inner">
-          <div className="what-now-left">
-            <div className="what-now-eyebrow">What now?</div>
-            <h2 className="what-now-headline">
-              {quadrant === 'key-performer' && <>You are operating at the top.<br />The question is what keeps you there.</>}
-              {quadrant === 'specialist'    && <>You are delivering.<br />But the right people are not seeing it.</>}
-              {quadrant === 'emerging'      && <>The potential is clear.<br />The track record is not there yet.</>}
-              {quadrant === 'at-risk'       && <>Something is getting in the way.<br />Let us find out what.</>}
-            </h2>
-          </div>
-          <div className="what-now-right">
-            <p className="what-now-programme-label">The Key Performer Programme</p>
-            <p className="what-now-programme-desc">Most professionals know what they should be doing differently. Very few have the system to actually change it. The Key Performer Programme is a structured 90–180 day experience built around the 5P framework — designed to close the gap between where you are and where you should be operating.</p>
-            <div className="what-now-cohort">Next cohort opening soon</div>
-            <a className="btn-cta" href="https://found.pro/waitlist">
-              Join the Waitlist for Early Access
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </a>
-          </div>
+          <div className="what-now-eyebrow">What Now?</div>
+          <h2 className="what-now-headline">Understanding your constraints is the<br />first step to becoming a Key Performer.</h2>
+          <a className="btn-cta" href="https://kpp-foundperform.com">
+            Discover How You Can Improve
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </a>
         </div>
       </div>
 
-      <div className="results-footnote">FOUND · found.pro · Key Performer Scorecard</div>
+      <div className="results-footnote">FOUND · foundperform.com · Key Performer Scorecard</div>
     </div>
   );
 }
