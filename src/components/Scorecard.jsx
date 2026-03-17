@@ -316,7 +316,6 @@ function ResultsScreen({ userData, result }) {
         </div>
       </div>
 
-
       {/* ── 3. FIVE DIMENSIONS ── */}
       <div className="results-body">
         <div className="results-section-label">Your Five Dimensions</div>

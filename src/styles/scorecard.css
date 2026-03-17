@@ -309,7 +309,7 @@ h1 em { color:var(--red); font-style:italic; }
 .quadrant-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 150px 150px;
+  grid-template-rows: 120px 120px;
   gap: 5px;
 }
 
