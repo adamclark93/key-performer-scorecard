@@ -67,6 +67,7 @@ export const questions = [
   { dim: 'pace',        text: 'Do you feel capable of more than your current role allows you to show?' },
   { dim: 'pace',        text: 'Do you feel ready to operate at the next level today?' },
   { dim: 'pace',        text: 'Do you feel your work is recognised by the right people?' },
+  { dim: 'pace',        text: 'Could you maintain your current workload for the next 3 months?' },
 
   // ── Replaceability ──
   { dim: 'performance', text: 'Could someone step into your role tomorrow without disruption?' },
