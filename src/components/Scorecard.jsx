@@ -220,7 +220,7 @@ function QuadrantGrid({ quadrant }) {
             <div
               key={c.key}
               className={`quadrant-cell ${c.key === quadrant ? 'active' : ''}`}
-              style={{ gridColumn: c.col, gridRow: c.row }}
+style={{ gridColumn: c.col, gridRow: c.row, ...(c.key === quadrant ? { '--active-color': quadrants[quadrant]?.color } : {}) }}
             >
               <span className="quadrant-cell-label">{c.label}</span>
               {c.key === quadrant && <span className="quadrant-dot">● You</span>}
@@ -272,8 +272,6 @@ function SubDimCard({ dimKey, score }) {
 function ResultsScreen({ userData, result }) {
   const { quadrant, overallPct, subScores } = result;
   const q = quadrants[quadrant];
-  const weakest   = getWeakestSubDim(subScores);
-  const strongest = getStrongestSubDim(subScores);
 
   const name = userData.firstName ? `, ${userData.firstName}` : '';
 
