@@ -131,13 +131,17 @@ function IntroScreen({ onStart }) {
 // ── LEAD ───────────────────────────────────────────────
 function LeadScreen({ onSubmit }) {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', jobLevel: '', industry: '' });
+  const [errors, setErrors] = useState({});
 
   function handleSubmit() {
-    if (!form.firstName || !form.email) { alert('Please enter your name and email to continue.'); return; }
+    const newErrors = {};
+    if (!form.firstName) newErrors.firstName = true;
+    if (!form.email) newErrors.email = true;
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
     onSubmit(form);
   }
 
-  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'VP', 'Director/Principal', 'Partner', 'C-Suite', 'Founder'];
+  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'Director', 'VP / SVP', 'C-Suite / Partner', 'Founder'];
   const industries = ['Private Equity', 'Venture Capital', 'Investment Banking', 'Consulting', 'Law', 'Asset Management', 'Corporate / In-house', 'Technology', 'Other'];
 
   return (
@@ -147,11 +151,45 @@ function LeadScreen({ onSubmit }) {
           <h2>Enter your details to start</h2>
           <p>We will send your results and a personalised breakdown directly to your inbox.</p>
           <div className="field-row">
-            <div className="field"><label>First Name</label><input placeholder="Alex" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} /></div>
-            <div className="field"><label>Last Name</label><input placeholder="Morgan" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} /></div>
+            <div className="field">
+              <label>First Name</label>
+              <input
+                placeholder="Alex"
+                value={form.firstName}
+                onChange={e => { setForm({ ...form, firstName: e.target.value }); setErrors(err => ({ ...err, firstName: false })); }}
+                style={errors.firstName ? { borderColor: '#ff2846' } : {}}
+              />
+              {errors.firstName && <div style={{ color: '#ff2846', fontSize: '.72rem', marginTop: '.3rem' }}>Please enter your first name</div>}
+            </div>
+            <div className="field">
+              <label>Last Name</label>
+              <input
+                placeholder="Morgan"
+                value={form.lastName}
+                onChange={e => setForm({ ...form, lastName: e.target.value })}
+              />
+            </div>
           </div>
-          <div className="field"><label>Email</label><input type="email" placeholder="alex@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
-          <div className="field"><label>Phone Number</label><input type="tel" placeholder="+44 7700 000000" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} /></div>
+          <div className="field">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="alex@company.com"
+              value={form.email}
+              onChange={e => { setForm({ ...form, email: e.target.value }); setErrors(err => ({ ...err, email: false })); }}
+              style={errors.email ? { borderColor: '#ff2846' } : {}}
+            />
+            {errors.email && <div style={{ color: '#ff2846', fontSize: '.72rem', marginTop: '.3rem' }}>Please enter your email address</div>}
+          </div>
+          <div className="field">
+            <label>Phone Number <span style={{ color: 'rgba(26,26,26,0.3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+            <input
+              type="tel"
+              placeholder="+44 7700 000000"
+              value={form.phone}
+              onChange={e => setForm({ ...form, phone: e.target.value })}
+            />
+          </div>
           <div className="field-row">
             <div className="field">
               <label>Job Level</label>
