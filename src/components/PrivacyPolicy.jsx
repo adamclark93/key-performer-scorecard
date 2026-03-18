@@ -24,8 +24,8 @@ export default function PrivacyPolicy() {
         </Section>
 
         <Section title="2. Who We Are">
-          <p>FOUND is a cognitive performance diagnostics company. Our services are operated by FOUND B.V., based in Amsterdam, the Netherlands.</p>
-          <p>For any privacy-related queries, you can contact us at: <a href="mailto:hello@found.pro" style={{ color: 'var(--red)' }}>hello@found.pro</a></p>
+          <p>FOUND is a coaching & development company. Our services are operated by FOUND Coaching based in Amsterdam, the Netherlands.</p>
+          <p>For any privacy-related queries, you can contact us at: <a href="mailto:hello@foundperform.com" style={{ color: 'var(--red)' }}>hello@foundperform.com</a></p>
         </Section>
 
         <Section title="3. What Data We Collect">
@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
             <li><strong>Portability</strong> — to request your data in a portable format</li>
             <li><strong>Objection</strong> — to object to processing based on legitimate interests</li>
           </ul>
-          <p style={{ marginTop: '1rem' }}>To exercise any of these rights, contact us at <a href="mailto:hello@found.pro" style={{ color: 'var(--red)' }}>hello@found.pro</a>. We will respond within 30 days.</p>
+          <p style={{ marginTop: '1rem' }}>To exercise any of these rights, contact us at <a href="mailto:hello@foundperform.com" style={{ color: 'var(--red)' }}>hello@foundperform.com</a>. We will respond within 30 days.</p>
         </Section>
 
         <Section title="10. Changes to This Policy">
@@ -96,9 +96,9 @@ export default function PrivacyPolicy() {
         <Section title="11. Contact Us">
           <p>If you have any questions about this Privacy Policy or how we handle your data, please contact us:</p>
           <p style={{ marginTop: '1rem' }}>
-            <strong>FOUND B.V.</strong><br />
-            Amsterdam, Netherlands<br />
-            <a href="mailto:hello@found.pro" style={{ color: 'var(--red)' }}>hello@found.pro</a>
+            <strong>FOUND Coaching</strong><br />
+             Amsterdam, Netherlands<br />
+            <a href="mailto:hello@foundperform.com" style={{ color: 'var(--red)' }}>hello@foundperform.com</a>
           </p>
         </Section>
 
