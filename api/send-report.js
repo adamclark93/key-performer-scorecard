@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const html = buildReportEmail(userData, result);
 
     const response = await resend.emails.send({
-      from: "Team FOUND <onboarding@resend.dev>",
+      from: "Team FOUND <hello@foundperform.com>",
       to: userData.email,
       subject: "Your Key Performer Scorecard Results",
       html: html
