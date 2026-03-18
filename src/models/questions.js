@@ -29,7 +29,7 @@ export const questions = [
 
   // ── Organisational Impact ──
   { dim: 'performance', text: 'Would a project noticeably slow down if you stepped away for a week?' },
-  { dim: 'performance', text: 'Do others depend on your judgment to move work forward?' },
+  { dim: 'performance', text: 'Do others depend on your judgement to move work forward?' },
   { dim: 'performance', text: 'Do leaders rely on you to solve difficult problems?' },
   { dim: 'performance', text: 'Do people listen when you speak in important meetings?' },
 

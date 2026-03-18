@@ -76,26 +76,26 @@ function IntroScreen({ onStart }) {
                 <span className="hiw-num">01</span>
                 <div>
                   <strong>Research Based Questions</strong>
-                  <p>25 behaviourally anchored yes/no questions measure your Performance and Potential — the two dimensions that determine whether you are in the critical talent pool.</p>
+                  <p>25 behaviourally anchored yes/no questions measure your Performance and Potential - the two dimensions that determine how likely you are to be a Key Performer.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">02</span>
                 <div>
                   <strong>Detailed Performance Scores</strong>
-                  <p>You will be placed in one of four quadrants: Key Performer, Workhorse, Emerging, or At Risk. Each comes with a breakdown across five dimensions: Perspective, Pace, Profile, Performance, and Progress.</p>
+                  <p>You will be placed in one of four quadrants: Key Performer, Workhorse, Emerging, or At Risk. Each comes with a breakdown across five dimensions.</p>
                 </div>
               </li>
               <li>
                 <span className="hiw-num">03</span>
                 <div>
                   <strong>Personalised Report</strong>
-                  <p>Your result includes honest context about what it means for your career and a tailored recommendation for what to do next.</p>
+                  <p>Your result includes context about what it means for your career and recommendations for what to do next.</p>
                 </div>
               </li>
             </ul>
             <button className="btn-primary" onClick={onStart} style={{ marginTop: '2.5rem' }}>
-              Find Out Where You Stand
+             Discover Your Performance Score
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
@@ -137,7 +137,7 @@ function LeadScreen({ onSubmit }) {
     onSubmit(form);
   }
 
-  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'Director', 'VP / SVP', 'C-Suite / Partner', 'Founder'];
+  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'VP', 'Director/Principal', 'Partner', 'C-Suite', 'Founder'];
   const industries = ['Private Equity', 'Venture Capital', 'Investment Banking', 'Consulting', 'Law', 'Asset Management', 'Corporate / In-house', 'Technology', 'Other'];
 
   return (

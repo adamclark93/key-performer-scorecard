@@ -9,7 +9,7 @@ export const quadrants = {
   'key-performer': {
     label: 'Key Performer',
     color: '#16a34a',
-    summary: 'Operating at the level organisations compete to keep. You are visible, impactful, and moving forward. The risk is not capability — it is being stretched in the wrong direction.',
+    summary: 'Operating at the level organisations compete to keep. You are visible, impactful, and moving forward. The risk is not capability - it is being stretched in the wrong direction.',
     cta: {
       label: 'Stay sharp. See how the best stay ahead.',
       button: 'Explore FOUND Pro',
@@ -39,7 +39,7 @@ export const quadrants = {
   'at-risk': {
     label: 'At Risk',
     color: '#ff2846',
-    summary: 'Something is getting in the way. High performers end up here too — usually when the role, the environment, or the recognition has not kept pace with the person.',
+    summary: 'Something is getting in the way. High performers end up here too - usually when the role, the environment, or the recognition has not kept pace with the person.',
     cta: {
       label: 'Something is getting in the way. Let us find out what.',
       button: 'Book a Free Discovery Call with Emily',
