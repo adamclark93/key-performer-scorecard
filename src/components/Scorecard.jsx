@@ -242,8 +242,8 @@ function SubDimCard({ dimKey, score, isWeakest, isStrongest }) {
   const d = subDims[dimKey];
   const barRef = useRef(null);
   const rating = getDimRating(score);
-  const color = isWeakest ? '#ff2846' : isStrongest ? '#16a34a' : '#1a1a1a';
-  const ratingColor = isWeakest ? '#ff2846' : isStrongest ? '#16a34a' : rating.color;
+  const color = '#1a1a1a';
+const ratingColor = rating.color;
 
   useEffect(() => {
     const timer = setTimeout(() => {
