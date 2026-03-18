@@ -134,38 +134,38 @@ export function buildReportEmail(userData, result) {
     </td>
   </tr>
 
-  <!-- CTA -->
+    <!-- CTA -->
   <tr>
-<td style="padding-top:40px;">
-
-<table width="100%" cellpadding="0" cellspacing="0" 
-style="background:#f1ece4;border-radius:8px;padding:30px;">
-
-<tr>
-<td align="center">
-
-<p style="font-size:16px;color:#333;line-height:1.6;margin-bottom:18px;">
-Right now though, if you'd like help identifying the fastest way to strengthen your trajectory, you can book a free consultation call with our head performance coach, <strong>Emily</strong>.
-</p>
-
-<p style="font-size:16px;color:#333;line-height:1.6;margin-bottom:25px;">
-Having worked with <strong>1000+ professionals in high-performance environments</strong>, she will help you understand your most impactful next step.
-</p>
-
-<a href="https://calendly.com/found-performance/keyperformer"
-style="display:inline-block;background:#ff2846;color:#ffffff;
-text-decoration:none;padding:16px 32px;border-radius:4px;
-font-weight:bold;font-size:15px;">
-Book a Free 30-Minute Consultation
-</a>
-
-</td>
-</tr>
-
-</table>
-
-</td>
-</tr>
+    <td style="padding-top:40px;">
+      <table width="100%" cellpadding="0" cellspacing="0"
+        style="background:#f1ece4;border-radius:8px;padding:30px;">
+        <tr>
+          <td align="center" style="padding-bottom:20px;">
+            <img
+              src="https://scorecard.foundperform.com/emily.jpg"
+              width="80"
+              style="border-radius:50%;display:block;margin:0 auto 12px;"
+            />
+            <div style="font-size:13px;font-weight:bold;color:#111;margin-bottom:2px;">Emily Cook</div>
+            <div style="font-size:12px;color:#888;letter-spacing:1px;text-transform:uppercase;">Head Performance Coach, FOUND</div>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <p style="font-size:15px;color:#333;line-height:1.65;margin-bottom:20px;max-width:480px;">
+              If you want to understand what your results mean for your career and identify your most impactful next step, book a free 30-minute call with Emily.
+            </p>
+            <a href="https://calendly.com/found-performance/keyperformer"
+              style="display:inline-block;background:#ff2846;color:#ffffff;
+              text-decoration:none;padding:16px 32px;border-radius:4px;
+              font-weight:bold;font-size:15px;">
+              Book a Free 30-Minute Consultation
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
 
 </body>
