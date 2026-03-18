@@ -1,3 +1,4 @@
+import { saveLead } from '../lib/supabase';
 import { useState, useEffect, useRef } from 'react';
 import { questions, subDims } from '../models/questions';
 import { calculateScores, quadrants, getDimRating, getWeakestSubDim, getStrongestSubDim } from '../models/scoring';
@@ -381,6 +382,7 @@ export default function Scorecard() {
       const finalResult = calculateScores(newAnswers);
       setResult(finalResult);
       setScreen('results');
+      saveLead(userData, finalResult, newAnswers);
       fetch('/api/send-report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
