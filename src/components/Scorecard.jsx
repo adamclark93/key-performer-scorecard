@@ -242,8 +242,6 @@ function SubDimCard({ dimKey, score, isWeakest, isStrongest }) {
   const d = subDims[dimKey];
   const barRef = useRef(null);
   const rating = getDimRating(score);
-  const color = '#1a1a1a';
-const ratingColor = rating.color;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -258,17 +256,17 @@ const ratingColor = rating.color;
   return (
     <div className="subdim-card">
       <div className="subdim-card-header">
-        <div className="subdim-card-name" style={{ color }}>{d.name}</div>
+        <div className="subdim-card-name">{d.name}</div>
         {isWeakest   && <span className="subdim-tag subdim-tag-weak">Biggest opportunity</span>}
         {isStrongest && <span className="subdim-tag subdim-tag-strong">Strongest signal</span>}
       </div>
       <div className="subdim-card-desc">{d.desc}</div>
       <div className="subdim-bar-wrap">
-        <div ref={barRef} className="subdim-bar" style={{ width: 0, background: color }} />
+        <div ref={barRef} className="subdim-bar" style={{ width: 0, background: rating.color }} />
       </div>
       <div className="subdim-card-score-row">
-        <div className="subdim-card-score" style={{ color }}>Score {rating.score}/5</div>
-        <div className="subdim-card-rating" style={{ color: ratingColor }}>{rating.label}</div>
+        <div className="subdim-card-score" style={{ color: rating.color }}>Score {rating.score}/5</div>
+        <div className="subdim-card-rating" style={{ color: rating.color }}>{rating.label}</div>
       </div>
     </div>
   );
