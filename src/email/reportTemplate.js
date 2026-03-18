@@ -152,23 +152,38 @@ export function buildReportEmail(userData, result) {
         </tr>
         <tr>
           <td align="center">
-            <p style="font-size:15px;color:#333;line-height:1.65;margin-bottom:20px;max-width:480px;">
-              If you want to understand what your results mean for your career and identify your most impactful next step, book a free 30-minute call with Emily.
+            <p style="font-size:15px;color:#333;line-height:1.65;margin-bottom:12px;max-width:480px;">
+              If you'd like help identifying the fastest way to strengthen your trajectory, you can book a free consultation call with Emily.
             </p>
-            <a href="https://calendly.com/found-performance/keyperformer"
-              style="display:inline-block;background:#ff2846;color:#ffffff;
-              text-decoration:none;padding:16px 32px;border-radius:4px;
-              font-weight:bold;font-size:15px;">
-              Book a Free 30-Minute Consultation
-            </a>
+            <p style="font-size:15px;color:#333;line-height:1.65;margin-bottom:24px;max-width:480px;">
+              Having worked with <strong>1000+ professionals in high-performance environments</strong>, she will help you understand your most impactful next step.
+            </p>
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" bgcolor="#ff2846" style="border-radius:4px;">
+                  <a href="https://calendly.com/found-performance/keyperformer"
+                    target="_blank"
+                    style="display:inline-block;background:#ff2846;color:#ffffff;
+                    text-decoration:none;padding:16px 32px;border-radius:4px;
+                    font-weight:bold;font-size:15px;mso-padding-alt:0;
+                    font-family:Arial,sans-serif;">
+                    Book a Free 30-Minute Consultation
+                  </a>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>
     </td>
   </tr>
-</table>
 
-</body>
-</html>
-`;
+  </table>
+  </td>
+  </tr>
+  </table>
+
+  </body>
+  </html>
+  `;
 }
