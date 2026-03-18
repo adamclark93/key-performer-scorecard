@@ -106,7 +106,7 @@ function IntroScreen({ onStart }) {
       </div>
 
       <div className="social-proof">
-        <h2 className="proof-heading">500+ senior professionals have worked with FOUND</h2>
+        <h2 className="proof-heading">500+ professionals have worked with FOUND</h2>
         <div className="testimonial-grid">
           {testimonials.map((t) => (
             <div key={t.name} className="testimonial-card">
@@ -338,7 +338,7 @@ function ResultsScreen({ userData, result }) {
         <div className="what-now-inner">
           <div className="what-now-eyebrow">What Now?</div>
           <h2 className="what-now-headline">Understanding your constraints is the first step to becoming a Key Performer.</h2>
-          <p className="what-now-sub">Being good is no longer enough to stand out. You now have a clearer picture of what might be holding you back — but taking action is what matters.</p>
+          <p className="what-now-sub">Being good is no longer enough to stand out. You now have a clearer picture of what might be holding you back but taking action is what matters.</p>
           <a className="btn-cta" href="https://calendly.com/found-performance/keyperformer">
             Discover How You Can Improve
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>

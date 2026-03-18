@@ -117,8 +117,8 @@ export function buildReportEmail(userData, result) {
       </h2>
 
       <p style="font-size:15px;line-height:1.7;color:#333;">
-        The mistake most ambitious people make when trying to improve is assuming they
-        simply need to work harder.
+        The mistakes most ambitious people make when trying to improve is assuming they
+        simply need to work harder or they try to fix every area at once.
       </p>
 
       <p style="font-size:15px;line-height:1.7;color:#333;">
@@ -156,7 +156,7 @@ export function buildReportEmail(userData, result) {
               If you'd like help identifying the fastest way to strengthen your trajectory, you can book a free consultation call with Emily.
             </p>
             <p style="font-size:15px;color:#333;line-height:1.65;margin-bottom:24px;max-width:480px;">
-              Having worked with <strong>1000+ professionals in high-performance environments</strong>, she will help you understand your most impactful next step.
+              Having worked with <strong>500+ professionals in high-performance environments</strong>, she will help you understand your most impactful next step.
             </p>
             <table cellpadding="0" cellspacing="0">
               <tr>
