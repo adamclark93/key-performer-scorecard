@@ -237,8 +237,8 @@ function QuadrantGrid({ quadrant }) {
   );
 }
 
-// ── SUB-DIMENSION CARD ─────────────────────────────────
-function SubDimCard({ dimKey, score, isWeakest, isStrongest }) {
+/// ── SUB-DIMENSION CARD ─────────────────────────────────
+function SubDimCard({ dimKey, score }) {
   const d = subDims[dimKey];
   const barRef = useRef(null);
   const rating = getDimRating(score);
@@ -255,11 +255,7 @@ function SubDimCard({ dimKey, score, isWeakest, isStrongest }) {
 
   return (
     <div className="subdim-card">
-      <div className="subdim-card-header">
-        <div className="subdim-card-name">{d.name}</div>
-        {isWeakest   && <span className="subdim-tag subdim-tag-weak">Biggest opportunity</span>}
-        {isStrongest && <span className="subdim-tag subdim-tag-strong">Strongest signal</span>}
-      </div>
+      <div className="subdim-card-name">{d.name}</div>
       <div className="subdim-card-desc">{d.desc}</div>
       <div className="subdim-bar-wrap">
         <div ref={barRef} className="subdim-bar" style={{ width: 0, background: rating.color }} />
@@ -324,8 +320,6 @@ function ResultsScreen({ userData, result }) {
               key={key}
               dimKey={key}
               score={subScores[key]}
-              isWeakest={key === weakest}
-              isStrongest={key === strongest}
             />
           ))}
         </div>
