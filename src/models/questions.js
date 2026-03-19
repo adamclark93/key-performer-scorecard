@@ -28,9 +28,9 @@ export const questions = [
   { dim: 'progress',    text: 'Do you believe you are on track for promotion in the next 12 months?' },
 
   // ── Organisational Impact ──
-  { dim: 'performance', text: 'Do leaders rely on you to solve difficult problems?' },
+  { dim: 'performance', text: 'Do leaders come to you to solve difficult problems?' },
   { dim: 'performance', text: 'Do people listen when you speak in important meetings?' },
-  { dim: 'performance', text: 'Does the quality and speed of your work hold up when the stakes are highest?' },
+  { dim: 'performance', text: 'When other are drowning in details, are you the person who sees the bigger picture?' },
   { dim: 'performance', text: 'Could someone step into your role tomorrow without disruption?', invert: true },
 
   // ── Performance Reality ──
@@ -40,7 +40,7 @@ export const questions = [
 
   // ── Pace & Motivation ──
   { dim: 'pace',        text: 'Do you feel capable of more than your current role allows?' },
-  { dim: 'pace',        text: 'Have you told your manager you are ready for greater responsibility in the last six months?' },
+  { dim: 'pace',        text: 'Have you asked for more responsibility in the last six months?' },
   { dim: 'pace',        text: 'Are you currently leading a project that falls outside your day to day work?' },
   { dim: 'pace',        text: 'Could you maintain your current workload for the next 3 months?' },
   { dim: 'pace',        text: 'I chose this career. If the money were equal I would still pick this over something easier.' },
