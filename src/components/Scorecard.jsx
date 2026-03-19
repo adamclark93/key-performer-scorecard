@@ -257,7 +257,7 @@ function QuadrantGrid({ quadrant }) {
           {cells.map(c => (
             <div
               key={c.key}
-              className={`quadrant-cell ${c.key === quadrant ? 'active' : ''}`}
+              className={`quadrant-cell ${c.key === quadrant ? `active q-${quadrant}` : ''}`}
 style={{ gridColumn: c.col, gridRow: c.row, ...(c.key === quadrant ? { '--active-color': quadrants[quadrant]?.color } : {}) }}
             >
               <span className="quadrant-cell-label">{c.label}</span>
