@@ -141,8 +141,8 @@ function LeadScreen({ onSubmit }) {
     onSubmit(form);
   }
 
-  const jobLevels = ['Analyst / Associate', 'Manager', 'Senior Manager', 'Director', 'VP / SVP', 'C-Suite / Partner', 'Founder'];
-  const industries = ['Private Equity', 'Venture Capital', 'Investment Banking', 'Consulting', 'Law', 'Asset Management', 'Corporate / In-house', 'Technology', 'Other'];
+  const jobLevels = ['Analyst / Associate', 'Manager / Senior Manager', 'Vice President', 'Director/Principal', 'Partner', 'C-Suite', 'Founder'];
+  const industries = ['Private Equity', 'Private Credit','Venture Capital', 'Asset Management','Investment Banking', 'Corporate Finance', 'Accounting & Audit', 'Other Financial Services', 'Strategy & ManagementConsulting', 'Legal', 'Technology & Software', 'Healthcare & Life Sciences','Other'];
 
   return (
     <div id="screen-lead" className="screen active">
@@ -258,10 +258,17 @@ function QuadrantGrid({ quadrant }) {
             <div
               key={c.key}
               className={`quadrant-cell ${c.key === quadrant ? `active q-${quadrant}` : ''}`}
-style={{ gridColumn: c.col, gridRow: c.row, ...(c.key === quadrant ? { '--active-color': quadrants[quadrant]?.color } : {}) }}
+              style={{ gridColumn: c.col, gridRow: c.row }}
             >
               <span className="quadrant-cell-label">{c.label}</span>
-              {c.key === quadrant && <span className="quadrant-dot">● You</span>}
+              {c.key === quadrant && (
+                <span
+                  className="quadrant-dot"
+                  style={{ color: quadrants[quadrant]?.color }}
+                >
+                  ● You
+                </span>
+              )}
             </div>
           ))}
         </div>
