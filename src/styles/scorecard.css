@@ -328,12 +328,21 @@ h1 em { color:var(--red); font-style:italic; }
 
 .quadrant-cell.active {
   background: #fff;
-  border-color: var(--red);
   border-width: 2px;
-  box-shadow: 0 4px 16px rgba(255,40,70,0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
-.quadrant-cell.active .quadrant-cell-label { color: var(--red); }
+.quadrant-cell.active.q-key-performer { border-color: #16a34a; }
+.quadrant-cell.active.q-key-performer .quadrant-cell-label { color: #16a34a; }
+
+.quadrant-cell.active.q-emerging { border-color: #7c3aed; }
+.quadrant-cell.active.q-emerging .quadrant-cell-label { color: #7c3aed; }
+
+.quadrant-cell.active.q-specialist { border-color: #2563eb; }
+.quadrant-cell.active.q-specialist .quadrant-cell-label { color: #2563eb; }
+
+.quadrant-cell.active.q-at-risk { border-color: #ff2846; }
+.quadrant-cell.active.q-at-risk .quadrant-cell-label { color: #ff2846; }
 
 .quadrant-cell-label {
   font-size: .58rem;
@@ -343,7 +352,7 @@ h1 em { color:var(--red); font-style:italic; }
   color: rgba(26,26,26,0.28);
 }
 
-.quadrant-dot { font-size:.72rem; font-weight:700; color:var(--red); }
+.quadrant-dot { font-size:.72rem; font-weight:700; }
 
 .quadrant-x-axis {
   display: flex;
