@@ -142,7 +142,7 @@ function LeadScreen({ onSubmit }) {
   }
 
   const jobLevels = ['Analyst / Associate', 'Manager / Senior Manager', 'Vice President', 'Director/Principal', 'Partner', 'C-Suite', 'Founder'];
-  const industries = ['Private Equity', 'Private Credit','Venture Capital', 'Asset Management','Investment Banking', 'Corporate Finance', 'Accounting & Audit', 'Other Financial Services', 'Strategy & ManagementConsulting', 'Legal', 'Technology & Software', 'Healthcare & Life Sciences','Other'];
+  const industries = ['Private Equity', 'Private Credit','Venture Capital', 'Asset Management','Investment Banking', 'Corporate Finance', 'Accounting & Audit', 'Other Financial Services', 'Strategy & Management Consulting', 'Legal', 'Technology & Software', 'Healthcare & Life Sciences','Other'];
 
   return (
     <div id="screen-lead" className="screen active">
