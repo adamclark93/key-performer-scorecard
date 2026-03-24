@@ -25,3 +25,28 @@ export async function saveLead(userData, result, answers) {
 
   if (error) console.error('Supabase insert error:', error);
 }
+
+export async function uploadPDF(pdfBase64, fileName) {
+  // Convert base64 to Uint8Array
+  const raw = atob(pdfBase64);
+  const bytes = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+
+  const { data, error } = await supabase.storage
+    .from('reports')
+    .upload(fileName, bytes, {
+      contentType: 'application/pdf',
+      upsert: true,
+    });
+
+  if (error) {
+    console.error('Supabase storage upload error:', error);
+    return null;
+  }
+
+  const { data: urlData } = supabase.storage
+    .from('reports')
+    .getPublicUrl(data.path);
+
+  return urlData.publicUrl;
+}

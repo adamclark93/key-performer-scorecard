@@ -91,14 +91,15 @@ export function calculateScores(answers) {
     Object.values(subScores).reduce((a, b) => a + b, 0) / Object.values(subScores).length
   );
 
-  // Quadrant placement (threshold 50%)
+  // Quadrant placement (threshold 50% on each axis, 70% overall for Key Performer)
   const highPerf = performancePct >= 50;
   const highPot  = potentialPct  >= 50;
 
   let quadrant;
-  if      ( highPerf &&  highPot) quadrant = 'key-performer';
+  if      ( highPerf &&  highPot && overallPct >= 70) quadrant = 'key-performer';
   else if (!highPerf &&  highPot) quadrant = 'emerging';
   else if ( highPerf && !highPot) quadrant = 'specialist';
+  else if ( highPerf &&  highPot) quadrant = 'emerging';
   else                            quadrant = 'at-risk';
 
   return { quadrant, performancePct, potentialPct, overallPct, subScores };

@@ -1,7 +1,10 @@
-import { saveLead } from '../lib/supabase';
+import { saveLead, uploadPDF } from '../lib/supabase';
 import { useState, useEffect, useRef } from 'react';
 import { questions, subDims } from '../models/questions';
 import { calculateScores, quadrants, getDimRating, getWeakestSubDim, getStrongestSubDim } from '../models/scoring';
+import { generatePDFBase64 } from '../lib/generatePDF';
+import { downloadShareCard, shareToLinkedIn } from '../lib/shareUtils';
+import ShareCard from './ShareCard';
 import '../styles/scorecard.css';
 
 function ProgressBar({ pct }) {
@@ -317,13 +320,44 @@ function SubDimCard({ dimKey, score }) {
 function ResultsScreen({ userData, result }) {
   const { quadrant, overallPct, subScores } = result;
   const q = quadrants[quadrant];
+  const shareCardRef = useRef(null);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [sharePreview, setSharePreview] = useState(null);
 
   const name = userData.firstName ? `, ${userData.firstName}` : '';
+
+  async function handleOpenShareModal() {
+    setShowShareModal(true);
+    // Generate preview after modal opens and card renders
+    setTimeout(async () => {
+      if (shareCardRef.current) {
+        const html2canvas = (await import('html2canvas')).default;
+        const canvas = await html2canvas(shareCardRef.current, {
+          scale: 1,
+          useCORS: true,
+          backgroundColor: '#f1ece4',
+        });
+        setSharePreview(canvas.toDataURL('image/png'));
+      }
+    }, 100);
+  }
+
+  async function handleDownloadCard() {
+    if (shareCardRef.current) {
+      await downloadShareCard(shareCardRef.current);
+    }
+  }
 
   return (
     <div id="screen-results" className="screen active">
       <ProgressBar pct={100} />
       <Nav logoHeight={64} />
+
+      {/* ── EMAIL NOTICE ── */}
+      <div className="email-notice">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4.5l7 5 7-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><rect x="1.5" y="3" width="15" height="12" rx="2" stroke="currentColor" strokeWidth="1.5"/></svg>
+        <span>Your full report has been sent to <strong>{userData.email}</strong></span>
+      </div>
 
       {/* ── 1. QUADRANT REVEAL ── */}
       <div className="results-hero">
@@ -348,14 +382,14 @@ function ResultsScreen({ userData, result }) {
             <QuadrantGrid quadrant={quadrant} />
             <div style={{ textAlign: 'center', marginTop: '1.5rem', width: '100%' }}>
               <div style={{ fontSize: '.65rem', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(26,26,26,0.35)', marginBottom: '.4rem' }}>Your Overall Score</div>
-              <div style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-.02em', color: q.color, lineHeight: 1 }}>{overallPct}%</div>
+              <div className="overall-score" style={{ color: q.color }}>{overallPct}%</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── 3. FIVE DIMENSIONS ── */}
       <div className="results-body">
+        {/* ── 2. FIVE DIMENSIONS ── */}
         <div className="results-section-label">Your Five Dimensions</div>
         <div className="subdim-grid">
           {Object.keys(subDims).map(key => (
@@ -365,6 +399,14 @@ function ResultsScreen({ userData, result }) {
               score={subScores[key]}
             />
           ))}
+        </div>
+
+        {/* ── 3. ACTIONS ── */}
+        <div className="results-actions">
+          <button className="btn-share" onClick={handleOpenShareModal}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 9v4h8V9M8 2v7M5 5l3-3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            Share on LinkedIn
+          </button>
         </div>
       </div>
 
@@ -382,6 +424,43 @@ function ResultsScreen({ userData, result }) {
       </div>
 
       <div className="results-footnote">FOUND · foundperform.com · Key Performer Scorecard</div>
+
+      {/* Hidden share card for rendering */}
+      <div style={{ position: 'absolute', left: '-9999px', top: 0 }}>
+        <ShareCard ref={shareCardRef} result={result} />
+      </div>
+
+      {/* Share modal */}
+      {showShareModal && (
+        <div className="share-modal-overlay" onClick={() => setShowShareModal(false)}>
+          <div className="share-modal" onClick={e => e.stopPropagation()}>
+            <button className="share-modal-close" onClick={() => setShowShareModal(false)}>&times;</button>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Share Your Result</h3>
+            <p style={{ fontSize: '.82rem', color: 'rgba(26,26,26,0.5)', lineHeight: 1.6 }}>
+              Download your result card, then share it on LinkedIn.
+            </p>
+            <div className="share-modal-preview">
+              {sharePreview ? (
+                <img src={sharePreview} alt="Share card preview" />
+              ) : (
+                <div style={{ padding: '3rem', textAlign: 'center', color: 'rgba(26,26,26,0.3)', fontSize: '.85rem' }}>
+                  Generating preview...
+                </div>
+              )}
+            </div>
+            <div className="share-modal-actions">
+              <button className="btn-download" onClick={handleDownloadCard}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 8l4 4 4-4M2 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                Download Card
+              </button>
+              <button className="btn-download" style={{ background: '#0a66c2' }} onClick={shareToLinkedIn}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.6 1H2.4C1.6 1 1 1.6 1 2.4v11.2c0 .8.6 1.4 1.4 1.4h11.2c.8 0 1.4-.6 1.4-1.4V2.4c0-.8-.6-1.4-1.4-1.4zM5.4 13H3.2V6.4h2.2V13zM4.3 5.5c-.7 0-1.3-.6-1.3-1.3s.6-1.3 1.3-1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3zM13 13h-2.2V9.8c0-.8 0-1.8-1.1-1.8s-1.3.9-1.3 1.7V13H6.2V6.4h2.1v.9c.3-.6 1-1.1 2.1-1.1 2.2 0 2.6 1.5 2.6 3.4V13z"/></svg>
+                Open LinkedIn
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -418,13 +497,23 @@ export default function Scorecard() {
       setResult(finalResult);
       setScreen('results');
       saveLead(userData, finalResult, newAnswers);
-      fetch('/api/send-report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userData, result: finalResult }),
-      }).catch((err) => {
-        console.error('Failed to send report email:', err);
-      });
+
+      // Generate PDF, upload to storage, send download URL with email
+      generatePDFBase64(userData, finalResult)
+        .then(async (pdfBase64) => {
+          const ts = Date.now();
+          const slug = (userData.firstName || 'user').toLowerCase().replace(/\s+/g, '-');
+          const fileName = `${slug}-${ts}.pdf`;
+          const pdfUrl = await uploadPDF(pdfBase64, fileName);
+          return fetch('/api/send-report', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userData, result: finalResult, pdfUrl }),
+          });
+        })
+        .catch((err) => {
+          console.error('Failed to send report email:', err);
+        });
     } else {
       setCurrentQ(next);
     }

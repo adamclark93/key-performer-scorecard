@@ -1,4 +1,4 @@
-export function buildReportEmail(userData, result) {
+export function buildReportEmail(userData, result, pdfUrl) {
 
   const name = userData?.firstName || "there";
   const score = result?.overallPct ?? result?.score ?? 0;
@@ -68,11 +68,28 @@ export function buildReportEmail(userData, result) {
         ${score}%
       </div>
 
-      <p style="font-size:15px;line-height:1.6;color:#333;margin:0;">
+      <p style="font-size:15px;line-height:1.6;color:#333;margin:0 0 20px 0;">
         This score reflects the balance between your
         <strong>current performance</strong> and the signals of
         <strong>future leadership potential</strong>.
       </p>
+
+      ${pdfUrl ? `
+      <table cellpadding="0" cellspacing="0" style="margin-top:16px;">
+        <tr>
+          <td align="center" bgcolor="#ff2846" style="border-radius:4px;">
+            <a href="${pdfUrl}"
+              target="_blank"
+              style="display:inline-block;background:#ff2846;color:#ffffff;
+              text-decoration:none;padding:16px 32px;border-radius:4px;
+              font-weight:bold;font-size:15px;mso-padding-alt:0;
+              font-family:Arial,sans-serif;">
+              Download Your Report
+            </a>
+          </td>
+        </tr>
+      </table>
+      ` : ''}
 
     </td>
   </tr>
