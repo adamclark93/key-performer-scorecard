@@ -493,6 +493,7 @@ export default function Scorecard() {
     setCurrentQ(0);
     setAnswers({ perspective: [], pace: [], profile: [], performance: [], progress: [] });
     setScreen('quiz');
+    window.scrollTo(0, 0);
   }
 
   function handleBack() {
@@ -516,6 +517,7 @@ export default function Scorecard() {
       const finalResult = calculateScores(newAnswers);
       setResult(finalResult);
       setScreen('results');
+      window.scrollTo(0, 0);
       saveLead(userData, finalResult, newAnswers);
 
       // Generate PDF, upload to storage, send download URL with email
