@@ -221,7 +221,7 @@ function LeadScreen({ onSubmit }) {
 }
 
 // ── QUIZ ───────────────────────────────────────────────
-function QuizScreen({ currentQ, onAnswer }) {
+function QuizScreen({ currentQ, onAnswer, onBack }) {
   const q = questions[currentQ];
   const pct = Math.round(((currentQ) / questions.length) * 100);
 
@@ -233,10 +233,13 @@ function QuizScreen({ currentQ, onAnswer }) {
         <div className="quiz-inner">
           <div className="quiz-counter">{currentQ + 1} / {questions.length}</div>
           <div className="quiz-question">{q.text}</div>
-          <div className="quiz-buttons">
+          <div className="quiz-buttons" key={currentQ}>
             <button className="btn-yes" onClick={() => onAnswer(true)}>Yes</button>
             <button className="btn-no"  onClick={() => onAnswer(false)}>No</button>
           </div>
+          {currentQ > 0 && (
+            <button className="btn-back" onClick={onBack}>Back</button>
+          )}
         </div>
       </div>
     </div>
@@ -492,6 +495,15 @@ export default function Scorecard() {
     setScreen('quiz');
   }
 
+  function handleBack() {
+    if (currentQ <= 0) return;
+    const prevQ = questions[currentQ - 1];
+    const prevDimAnswers = [...(answers[prevQ.dim] || [])];
+    prevDimAnswers.pop();
+    setAnswers({ ...answers, [prevQ.dim]: prevDimAnswers });
+    setCurrentQ(currentQ - 1);
+  }
+
   function handleAnswer(val) {
     const q = questions[currentQ];
     const next = currentQ + 1;
@@ -531,7 +543,7 @@ export default function Scorecard() {
     <>
       {screen === 'intro'   && (<><Nav /><IntroScreen onStart={handleStart} /></>)}
       {screen === 'lead'    && (<><Nav /><LeadScreen onSubmit={handleLeadSubmit} /></>)}
-      {screen === 'quiz'    && <QuizScreen currentQ={currentQ} onAnswer={handleAnswer} />}
+      {screen === 'quiz'    && <QuizScreen currentQ={currentQ} onAnswer={handleAnswer} onBack={handleBack} />}
       {screen === 'results' && result && <ResultsScreen userData={userData} result={result} />}
     </>
   );

@@ -249,6 +249,8 @@ h1 em { color:var(--red); font-style:italic; }
 .btn-yes, .btn-no { flex:1; padding:1rem 1.5rem; min-height:56px; font-family:'DMSans',sans-serif; font-size:.95rem; font-weight:700; border-radius:3px; cursor:pointer; transition:all .2s; border:1.5px solid var(--border); background:#fff; color:var(--dark); letter-spacing:.02em; text-align:center; touch-action:manipulation; -webkit-tap-highlight-color:transparent; user-select:none; }
 .btn-yes:hover { background:var(--dark); color:#fff; border-color:var(--dark); }
 .btn-no:hover { background:var(--dark); color:#fff; border-color:var(--dark); }
+.btn-back { background:none; border:none; color:rgba(26,26,26,0.35); font-family:'DMSans',sans-serif; font-size:.8rem; font-weight:600; cursor:pointer; margin-top:1.2rem; padding:.5rem 0; letter-spacing:.04em; transition:color .2s; }
+.btn-back:hover { color:var(--dark); }
 
 /* ══════════════════════════════════════
    RESULTS
