@@ -50,15 +50,17 @@ export const quadrants = {
 
 // ── DIM RATING ─────────────────────────────────────────
 // Converts a dimension % score to a score out of 5 + strength label
-// 5     = High Strength
-// 3–4   = Average Strength
-// 1–2   = Low Strength
+// 5     = High
+// 4     = High Average
+// 3     = Average
+// 1–2   = Low
 
 export function getDimRating(pct) {
   const score = Math.max(1, Math.round((pct / 100) * 5));
-  if (score === 5) return { score, label: 'High Strength',    color: '#16a34a' };
-  if (score >= 3)  return { score, label: 'Average Strength', color: '#d97706' };
-  return                  { score, label: 'Low Strength',     color: '#ff2846' };
+  if (score === 5) return { score, label: 'High',         color: '#16a34a' };
+  if (score === 4) return { score, label: 'High Average', color: '#22c55e' };
+  if (score === 3) return { score, label: 'Average',      color: '#d97706' };
+  return                  { score, label: 'Low',          color: '#ff2846' };
 }
 
 // ── SCORING ────────────────────────────────────────────
@@ -97,10 +99,10 @@ export function calculateScores(answers) {
 
   let quadrant;
   if      ( highPerf &&  highPot && overallPct >= 70) quadrant = 'key-performer';
-  else if (!highPerf &&  highPot) quadrant = 'emerging';
-  else if ( highPerf && !highPot) quadrant = 'specialist';
-  else if ( highPerf &&  highPot) quadrant = 'emerging';
-  else                            quadrant = 'at-risk';
+  else if ( highPerf &&  highPot)                     quadrant = 'specialist';
+  else if (!highPerf &&  highPot)                     quadrant = 'emerging';
+  else if ( highPerf && !highPot)                     quadrant = 'specialist';
+  else                                                quadrant = 'at-risk';
 
   return { quadrant, performancePct, potentialPct, overallPct, subScores };
 }

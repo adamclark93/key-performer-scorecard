@@ -75,17 +75,23 @@ export function buildReportEmail(userData, result, pdfUrl) {
       </p>
 
       ${pdfUrl ? `
-      <table cellpadding="0" cellspacing="0" style="margin-top:16px;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px;">
         <tr>
-          <td align="center" bgcolor="#ff2846" style="border-radius:4px;">
-            <a href="${pdfUrl}"
-              target="_blank"
-              style="display:inline-block;background:#ff2846;color:#ffffff;
-              text-decoration:none;padding:16px 32px;border-radius:4px;
-              font-weight:bold;font-size:15px;mso-padding-alt:0;
-              font-family:Arial,sans-serif;">
-              Download Your Report
-            </a>
+          <td align="center">
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" bgcolor="#ff2846" style="border-radius:4px;">
+                  <a href="${pdfUrl}"
+                    target="_blank"
+                    style="display:inline-block;background:#ff2846;color:#ffffff;
+                    text-decoration:none;padding:16px 32px;border-radius:4px;
+                    font-weight:bold;font-size:15px;mso-padding-alt:0;
+                    font-family:Arial,sans-serif;">
+                    Download Your Report
+                  </a>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>

@@ -63,7 +63,7 @@ function IntroScreen({ onStart }) {
       <div className="intro-hero">
         <p className="intro-eyebrow">Instant results · Tailored report · Personalised insights</p>
         <h1>Are you a <em>key performer</em> in your business?</h1>
-        <p className="intro-sub">Whether you like it or not, you are being put in a box. Take the Key Performer Scorecard and benchmark your ability to stand out in a business context. Instant access to your results.</p>
+        <p className="intro-sub">Whether you like it or not, you are being put in a box. Take the Key Performer Scorecard and benchmark your ability to stand out in a business context.</p>
         <button className="btn-primary" onClick={onStart}>
           Take the Assessment
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -372,9 +372,10 @@ function ResultsScreen({ userData, result }) {
                 We have scored your answers across five dimensions giving you a score out of 5.
               </p>
               <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-                <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low Strength</span>
-                <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average Strength</span>
-                <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High Strength</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#ff2846' }} />Low</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#d97706' }} />Average</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#22c55e' }} />High Average</span>
+                <span className="legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />High</span>
               </div>
             </div>
           </div>
@@ -403,6 +404,13 @@ function ResultsScreen({ userData, result }) {
 
         {/* ── 3. ACTIONS ── */}
         <div className="results-actions">
+          <a
+            className="btn-team-compare"
+            href={`mailto:?subject=${encodeURIComponent('Take the Key Performer Scorecard')}&body=${encodeURIComponent(`I just took the Key Performer Scorecard and scored ${overallPct}% — ${quadrants[quadrant].label}.\n\nIt's a quick 25-question assessment that benchmarks how you show up at work across five dimensions.\n\nTake it here: https://scorecard.foundperform.com\n\nWould be great to compare results.`)}`}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 4H2v8h12V4zM2 4l6 5 6-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            See How Your Team Compares
+          </a>
           <button className="btn-share" onClick={handleOpenShareModal}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 9v4h8V9M8 2v7M5 5l3-3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             Share on LinkedIn

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Preview</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; background: #f5f3ef; }
+    button { background: #ff2846; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 8px; cursor: pointer; margin: 8px; }
+    button:hover { opacity: 0.9; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    select { padding: 8px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc; }
+    #status { margin-left: 12px; color: #666; }
+  </style>
+</head>
+<body>
+  <h2>PDF Report Preview</h2>
+  <p>Select a quadrant profile and click Generate. The PDF will download automatically.</p>
+  <div class="controls">
+    <select id="quadrant">
+      <option value="key-performer">Key Performer (92%)</option>
+      <option value="emerging">Emerging (48%)</option>
+      <option value="specialist">Workhorse (58%)</option>
+      <option value="at-risk">At Risk (28%)</option>
+    </select>
+    <button id="genBtn">Generate &amp; Download PDF</button>
+    <span id="status"></span>
+  </div>
+
+  <script>
+    document.getElementById('genBtn').addEventListener('click', async function() {
+      const status = document.getElementById('status');
+      status.textContent = 'Generating...';
+
+      // Dynamic import from Vite dev server
+      const { generatePDFBase64 } = await import('/src/lib/generatePDF.js');
+
+      const q = document.getElementById('quadrant').value;
+
+      const mockScores = {
+        'key-performer': { perspective: 80, pace: 100, profile: 100, performance: 80, progress: 100 },
+        'emerging':      { perspective: 60, pace: 80, profile: 20, performance: 40, progress: 40 },
+        'specialist':    { perspective: 40, pace: 40, profile: 60, performance: 80, progress: 60 },
+        'at-risk':       { perspective: 20, pace: 40, profile: 20, performance: 40, progress: 20 },
+      };
+
+      const sub = mockScores[q];
+      const performancePct = Math.round((sub.profile + sub.performance + sub.progress) / 3);
+      const potentialPct = Math.round((sub.perspective + sub.pace) / 2);
+      const overallPct = Math.round(Object.values(sub).reduce((a, b) => a + b, 0) / 5);
+      const result = { quadrant: q, performancePct, potentialPct, overallPct, subScores: sub };
+      const userData = { firstName: 'Adam', lastName: 'Clark', email: 'adam@foundcoaching.co.uk' };
+
+      try {
+        const base64 = await generatePDFBase64(userData, result);
+        const bytes = atob(base64);
+        const arr = new Uint8Array(bytes.length);
+        for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+        const blob = new Blob([arr], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+
+        // Auto-download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'FOUND-Preview-' + q + '.pdf';
+        a.click();
+
+        status.textContent = 'Done! Check your downloads.';
+      } catch(e) {
+        status.textContent = 'Error: ' + e.message;
+        console.error(e);
+      }
+    });
+  </script>
+</body>
+</html>

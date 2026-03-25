@@ -1,7 +1,9 @@
 /* ── FONTS ── */
-@font-face { font-family: 'MaisonNeue'; src: url('./fonts/MaisonNeue-Book__1_.ttf') format('truetype'); font-weight: 400; font-style: normal; }
-@font-face { font-family: 'MaisonNeue'; src: url('./fonts/MaisonNeue-BookItalic__1_.ttf') format('truetype'); font-weight: 400; font-style: italic; }
-@font-face { font-family: 'MaisonNeue'; src: url('./fonts/MaisonNeue-Bold__1_.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'DMSans'; src: url('./DMSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'DMSans'; src: url('./DMSans-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'DMSans'; src: url('./DMSans-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'InstrumentSerif'; src: url('./InstrumentSerif-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'InstrumentSerif'; src: url('./InstrumentSerif-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; }
 
 /* ── TOKENS ── */
 :root {
@@ -18,7 +20,7 @@
 
 /* ── RESET ── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'MaisonNeue',sans-serif; background:var(--bg); color:var(--dark); min-height:100vh; overflow-x:hidden; }
+body { font-family:'DMSans',sans-serif; background:var(--bg); color:var(--dark); min-height:100vh; overflow-x:hidden; }
 
 /* ── PROGRESS BAR ── */
 #pbar-wrap { position:fixed; top:0; left:0; right:0; height:2px; background:rgba(26,26,26,0.08); z-index:200; }
@@ -52,7 +54,7 @@ nav img { height:40px; width:auto; }
   gap: .7rem;
   background: var(--red);
   color: #fff;
-  font-family: 'MaisonNeue', sans-serif;
+  font-family: 'DMSans', sans-serif;
   font-size: .9rem;
   font-weight: 700;
   padding: .95rem 1.8rem;
@@ -92,10 +94,10 @@ nav img { height:40px; width:auto; }
 }
 
 h1 {
-  font-family: 'MaisonNeue', sans-serif;
-  font-size: clamp(2rem, 7vw, 4rem);
-  font-weight: 700;
-  line-height: 1.1;
+  font-family: 'InstrumentSerif', serif;
+  font-size: clamp(2.4rem, 9vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.05;
   color: var(--dark);
   letter-spacing: -.02em;
 }
@@ -220,7 +222,7 @@ h1 em { color:var(--red); font-style:italic; }
   background: var(--dark-faint);
   border: 1px solid var(--border);
   color: var(--dark);
-  font-family: 'MaisonNeue', sans-serif;
+  font-family: 'DMSans', sans-serif;
   font-size: .95rem;
   padding: .85rem 1rem;
   border-radius: 3px;
@@ -244,7 +246,7 @@ h1 em { color:var(--red); font-style:italic; }
 .quiz-counter { font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(26,26,26,0.3); margin-bottom:1.5rem; }
 .quiz-question { font-size:clamp(1.2rem,4vw,2.2rem); font-weight:700; line-height:1.3; letter-spacing:-.015em; color:var(--dark); margin-bottom:2.5rem; }
 .quiz-buttons { display:flex; flex-direction:column; gap:.8rem; }
-.btn-yes, .btn-no { flex:1; padding:1rem 1.5rem; min-height:56px; font-family:'MaisonNeue',sans-serif; font-size:.95rem; font-weight:700; border-radius:3px; cursor:pointer; transition:all .2s; border:1.5px solid var(--border); background:#fff; color:var(--dark); letter-spacing:.02em; text-align:center; touch-action:manipulation; -webkit-tap-highlight-color:transparent; user-select:none; }
+.btn-yes, .btn-no { flex:1; padding:1rem 1.5rem; min-height:56px; font-family:'DMSans',sans-serif; font-size:.95rem; font-weight:700; border-radius:3px; cursor:pointer; transition:all .2s; border:1.5px solid var(--border); background:#fff; color:var(--dark); letter-spacing:.02em; text-align:center; touch-action:manipulation; -webkit-tap-highlight-color:transparent; user-select:none; }
 .btn-yes:hover { background:var(--dark); color:#fff; border-color:var(--dark); }
 .btn-no:hover { background:var(--dark); color:#fff; border-color:var(--dark); }
 
@@ -293,8 +295,9 @@ h1 em { color:var(--red); font-style:italic; }
 }
 
 .results-quadrant-name {
+  font-family: 'InstrumentSerif', serif;
   font-size: clamp(2.4rem, 8vw, 4.2rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: -.02em;
   margin-bottom: .8rem;
@@ -452,7 +455,7 @@ h1 em { color:var(--red); font-style:italic; }
 
 .what-now-eyebrow { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:700; }
 
-.what-now-headline { font-size:clamp(1.4rem, 5vw, 2rem); font-weight:700; line-height:1.2; color:#fff; letter-spacing:-.02em; max-width:680px; }
+.what-now-headline { font-family:'InstrumentSerif',serif; font-size:clamp(1.4rem, 5vw, 2rem); font-weight:400; line-height:1.2; color:#fff; letter-spacing:-.02em; max-width:680px; }
 
 .what-now-sub { font-size:.88rem; color:rgba(255,255,255,0.45); line-height:1.8; max-width:560px; }
 
@@ -463,7 +466,7 @@ h1 em { color:var(--red); font-style:italic; }
   gap: .7rem;
   background: var(--red);
   color: #fff;
-  font-family: 'MaisonNeue', sans-serif;
+  font-family: 'DMSans', sans-serif;
   font-size: .9rem;
   font-weight: 700;
   padding: 1.1rem 2rem;
@@ -479,14 +482,14 @@ h1 em { color:var(--red); font-style:italic; }
 .btn-cta:hover { background:#e01f3c; }
 
 /* ── OVERALL SCORE ── */
-.overall-score { font-size:clamp(2.2rem, 6vw, 3rem); font-weight:700; letter-spacing:-.02em; line-height:1; }
+.overall-score { font-family:'InstrumentSerif',serif; font-size:clamp(2.2rem, 6vw, 3rem); font-weight:400; letter-spacing:-.02em; line-height:1; }
 
 /* ── RESULTS ACTIONS ── */
 .results-actions { display:flex; flex-direction:column; gap:.8rem; margin:1.5rem 0; }
 
 .btn-download, .btn-share {
   display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
-  font-family:'MaisonNeue',sans-serif; font-size:.85rem; font-weight:700;
+  font-family:'DMSans',sans-serif; font-size:.85rem; font-weight:700;
   padding:.85rem 1.6rem; border-radius:3px; cursor:pointer; transition:all .2s;
   border:none; letter-spacing:.02em; text-decoration:none;
 }
@@ -494,6 +497,20 @@ h1 em { color:var(--red); font-style:italic; }
 .btn-download:hover { background:#333; }
 .btn-share { background:transparent; color:var(--dark); border:1.5px solid var(--border); }
 .btn-share:hover { border-color:var(--dark); }
+
+.btn-team-compare {
+  display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+  font-family:'DMSans',sans-serif; font-size:.85rem; font-weight:700;
+  padding:.85rem 1.6rem; border-radius:3px; cursor:pointer; transition:all .2s;
+  border:none; letter-spacing:.02em; text-decoration:none;
+  background:var(--red); color:#fff;
+  animation: pulse-team 2s ease-in-out infinite;
+}
+.btn-team-compare:hover { opacity:.9; transform:translateY(-1px); }
+@keyframes pulse-team {
+  0%, 100% { box-shadow:0 0 0 0 rgba(255,40,70,0.4); }
+  50% { box-shadow:0 0 0 8px rgba(255,40,70,0); }
+}
 
 /* ── SHARE MODAL ── */
 .share-modal-overlay {
