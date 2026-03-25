@@ -95,7 +95,7 @@ nav img { height:40px; width:auto; }
 
 h1 {
   font-family: 'InstrumentSerif', serif;
-  font-size: clamp(2.4rem, 9vw, 5.2rem);
+  font-size: clamp(2.6rem, 9vw, 5.2rem);
   font-weight: 400;
   line-height: 1.05;
   color: var(--dark);
@@ -104,7 +104,7 @@ h1 {
 h1 em { color:var(--red); font-style:italic; }
 
 .intro-sub {
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
   line-height: 1.75;
   color: var(--dark-dim);
   max-width: 680px;
