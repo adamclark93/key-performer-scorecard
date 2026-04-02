@@ -25,7 +25,7 @@ function IntroScreen({ onStart }) {
     {
       name: 'Samantha M.',
       role: 'Principal',
-      company: 'The Carlyle Group',
+      company: 'AlpInvest Carlyle',
       quote: 'The use of data and science, combined with her private equity background, made this feel different. Would strongly recommend!',
       img: '/samantha.jpg',
     },

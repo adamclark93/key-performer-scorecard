@@ -5,6 +5,7 @@ import { calculateScores, quadrants, getDimRating, getWeakestSubDim, getStronges
 import { generatePDFBase64 } from '../lib/generatePDF';
 import { downloadShareCard, shareToLinkedIn } from '../lib/shareUtils';
 import ShareCard from './ShareCard';
+import { trackEvent } from '../lib/analytics';
 import '../styles/scorecard.css';
 
 function ProgressBar({ pct }) {
@@ -30,7 +31,7 @@ function IntroScreen({ onStart }) {
     {
       name: 'Samantha M.',
       role: 'Principal',
-      company: 'The Carlyle Group',
+      company: 'AlpInvest Carlyle',
       quote: 'The use of data and science, combined with her private equity background, made this feel different. Would strongly recommend.',
       img: '/samantha.jpg',
     },
@@ -93,7 +94,7 @@ function IntroScreen({ onStart }) {
                 <span className="hiw-num">03</span>
                 <div>
                   <strong>Personalised Report</strong>
-                  <p>Your result includes context about what it means for your career and recommendations for what to do next.</p>
+                  <p>You'll receive a report with your results, including context about what it means for your career and recommendations for what to do next.</p>
                 </div>
               </li>
             </ul>
@@ -330,6 +331,7 @@ function ResultsScreen({ userData, result }) {
   const name = userData.firstName ? `, ${userData.firstName}` : '';
 
   async function handleOpenShareModal() {
+    trackEvent('share_modal_opened');
     setShowShareModal(true);
     // Generate preview after modal opens and card renders
     setTimeout(async () => {
@@ -346,6 +348,7 @@ function ResultsScreen({ userData, result }) {
   }
 
   async function handleDownloadCard() {
+    trackEvent('download_card');
     if (shareCardRef.current) {
       await downloadShareCard(shareCardRef.current);
     }
@@ -427,7 +430,7 @@ function ResultsScreen({ userData, result }) {
           <div className="what-now-eyebrow">What Now?</div>
           <h2 className="what-now-headline">Understanding your constraints is the first step to becoming a Key Performer.</h2>
           <p className="what-now-sub">Being good is no longer enough to stand out. You now have a clearer picture of what might be holding you back but taking action is what matters.</p>
-          <a className="btn-cta" href="https://calendly.com/found-performance/keyperformer">
+          <a className="btn-cta" href="https://calendly.com/found-performance/keyperformer" onClick={() => trackEvent('cta_calendly_clicked')}>
             Discover How You Can Improve
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
@@ -464,7 +467,7 @@ function ResultsScreen({ userData, result }) {
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 8l4 4 4-4M2 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Download Card
               </button>
-              <button className="btn-download" style={{ background: '#0a66c2' }} onClick={shareToLinkedIn}>
+              <button className="btn-download" style={{ background: '#0a66c2' }} onClick={() => { trackEvent('share_linkedin'); shareToLinkedIn(); }}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.6 1H2.4C1.6 1 1 1.6 1 2.4v11.2c0 .8.6 1.4 1.4 1.4h11.2c.8 0 1.4-.6 1.4-1.4V2.4c0-.8-.6-1.4-1.4-1.4zM5.4 13H3.2V6.4h2.2V13zM4.3 5.5c-.7 0-1.3-.6-1.3-1.3s.6-1.3 1.3-1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3zM13 13h-2.2V9.8c0-.8 0-1.8-1.1-1.8s-1.3.9-1.3 1.7V13H6.2V6.4h2.1v.9c.3-.6 1-1.1 2.1-1.1 2.2 0 2.6 1.5 2.6 3.4V13z"/></svg>
                 Open LinkedIn
               </button>
@@ -486,9 +489,13 @@ export default function Scorecard() {
   const [userData, setUserData] = useState({});
   const [result, setResult]     = useState(null);
 
-  function handleStart() { setScreen('lead'); }
+  function handleStart() {
+    trackEvent('scorecard_started');
+    setScreen('lead');
+  }
 
   function handleLeadSubmit(form) {
+    trackEvent('lead_submitted', { job_level: form.jobLevel, industry: form.industry });
     setUserData(form);
     setCurrentQ(0);
     setAnswers({ perspective: [], pace: [], profile: [], performance: [], progress: [] });
@@ -513,8 +520,12 @@ export default function Scorecard() {
       [q.dim]: [...(answers[q.dim] || []), val ? 1 : 0],
     };
     setAnswers(newAnswers);
+    if (currentQ === 0) trackEvent('quiz_started');
+    trackEvent('question_answered', { question_number: currentQ + 1 });
     if (next >= questions.length) {
+      trackEvent('quiz_completed');
       const finalResult = calculateScores(newAnswers);
+      trackEvent('results_viewed', { quadrant: finalResult.quadrant, overall_pct: finalResult.overallPct });
       setResult(finalResult);
       setScreen('results');
       window.scrollTo(0, 0);
