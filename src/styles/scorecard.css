@@ -446,22 +446,31 @@ h1 em { color:var(--red); font-style:italic; }
 .what-now {
   background: var(--dark);
   color: #fff;
-  padding: 3.5rem var(--content-p);
+  padding: 5rem var(--content-p);
 }
 
-.what-now-inner {
-  max-width: 780px;
+.what-now-eyebrow { font-family:'InstrumentSerif',serif; font-size:clamp(2.2rem, 6vw, 3.5rem); font-weight:400; color:#fff; letter-spacing:-.02em; max-width:var(--content-w); margin:0 auto 3rem; line-height:1.1; }
+
+.what-now-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: var(--content-w);
   margin: 0 auto;
+}
+
+.what-now-card {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
+.what-now-card .btn-cta { margin-top:auto; align-self:stretch; }
 
-.what-now-eyebrow { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:700; }
+.what-now-card-title { font-family:'InstrumentSerif',serif; font-size:clamp(1.5rem, 4vw, 2.2rem); font-weight:400; line-height:1.2; color:#fff; letter-spacing:-.02em; }
 
-.what-now-headline { font-family:'InstrumentSerif',serif; font-size:clamp(1.4rem, 5vw, 2rem); font-weight:400; line-height:1.2; color:#fff; letter-spacing:-.02em; max-width:680px; }
-
-.what-now-sub { font-size:.88rem; color:rgba(255,255,255,0.45); line-height:1.8; max-width:560px; }
+.what-now-card-sub { font-size:1rem; color:rgba(255,255,255,0.55); line-height:1.8; }
 
 .btn-cta {
   display: inline-flex;
@@ -484,6 +493,8 @@ h1 em { color:var(--red); font-style:italic; }
   text-align: center;
 }
 .btn-cta:hover { background:#e01f3c; }
+.btn-cta-outline { background:transparent; color:var(--red); border:2px solid var(--red); }
+.btn-cta-outline:hover { background:var(--red); color:#fff; }
 
 /* ── OVERALL SCORE ── */
 .overall-score { font-family:'InstrumentSerif',serif; font-size:clamp(2.2rem, 6vw, 3rem); font-weight:400; letter-spacing:-.02em; line-height:1; }
@@ -560,7 +571,8 @@ h1 em { color:var(--red); font-style:italic; }
 
   .quadrant-grid { grid-template-rows:120px 120px; }
 
-  .what-now { padding:5rem var(--content-p); }
+  .what-now { padding:7rem var(--content-p); }
+  .what-now-grid { grid-template-columns:1fr 1fr; }
 
   .results-actions { flex-direction:row; justify-content:center; }
   .results-explainer-text { font-size:.88rem; }
