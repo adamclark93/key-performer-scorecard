@@ -87,9 +87,9 @@ function addPageHeader(doc, logo, onDark = false) {
 const dimContent = {
   perspective: {
     what: [
-      'Perspective measures how clearly you understand where you produce value and how ruthlessly you protect time for it. The constraint in most professional environments is not effort. It is attention.',
+      'Perspective measures how clearly you understand where you produce value and how ruthlessly you protect time for it. The constraint in most professional environments is not effort - it is attention.',
       'Research consistently shows that a small fraction of activities drives the majority of outcomes. The challenge is that most professionals know this and do not live it.',
-      'Research on attention residue adds a harder edge: switching between tasks leaves a cognitive trace that degrades performance on the next one. Fragmented days are not just unpleasant. They are measurably costly.',
+      'Research on attention residue adds a harder edge: switching between tasks leaves a cognitive trace that degrades performance on the next one. Fragmented days are not just frustrating, they are measurably costly.',
       'As AI takes on more analytical and processual work, the premium on human judgement and strategic clarity is rising. Knowing exactly where your irreplaceable value sits, and protecting time for it, is no longer just good practice. It is the job.',
     ],
     keyQuestion: 'If a senior partner reviewed how you spent last week, not your outputs but your actual time, would they see someone operating at the top of their value chain?',
@@ -601,33 +601,38 @@ function drawCtaPage(doc, logo) {
   // Logo
   if (logo) doc.addImage(logo, 'PNG', LEFT, 20, 30, 15);
 
-  // #17: Better vertical centering — content block starts at ~38%
-  let y = ph * 0.38;
-  doc.setFontSize(34);
+  // #17: Better vertical centering — content block starts at ~32%
+  let y = ph * 0.32;
+  doc.setFontSize(38);
   doc.setFont(SERIF, 'normal');
   doc.setTextColor(255, 255, 255);
-  doc.text('Ready to become a', pw / 2, y, { align: 'center' });
-
-  y += 16;
-  doc.setTextColor(...BRAND_RED);
-  doc.text('Key Performer?', pw / 2, y, { align: 'center' });
+  doc.text('What to do next?', pw / 2, y, { align: 'center' });
 
   y += 22;
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setFont(SANS, 'normal');
   doc.setTextColor(200, 200, 210);
-  const subLines = doc.splitTextToSize(
-    'Understanding your constraints is the first step. FOUND works with ambitious professionals to close the gap between where they are and where they should be.',
+  const subLines1 = doc.splitTextToSize(
+    'Understanding your constraints is the first step. If you are interested in finding out how 1-1 coaching could help you get clear on what is next for you and help you get there, we\u2019d love to hear from you.',
     pw * 0.6,
   );
-  doc.text(subLines, pw / 2, y, { align: 'center' });
+  doc.text(subLines1, pw / 2, y, { align: 'center' });
+
+  y += subLines1.length * 5.5 + 10;
+  doc.setFontSize(11);
+  doc.setFont(SANS, 'bold');
+  doc.setTextColor(200, 200, 210);
+  const subLines2 = doc.splitTextToSize(
+    'We only work with 10 individuals a quarter to ensure we give the depth and quality for behaviour change.',
+    pw * 0.6,
+  );
+  doc.text(subLines2, pw / 2, y, { align: 'center' });
 
   // Value props centred
-  y += subLines.length * 6 + 20;
+  y += subLines2.length * 5.5 + 20;
   const props = [
-    'One-to-one coaching tailored to your scorecard results',
+    'One-to-one coaching tailored to your results',
     'Proven frameworks used by 500+ professionals',
-    'Measurable progress within 90 days',
   ];
 
   props.forEach((prop) => {
@@ -654,13 +659,6 @@ function drawCtaPage(doc, logo) {
 
   // Add clickable link annotation
   doc.link(btnX, y, btnW, btnH, { url: CALENDLY_URL });
-
-  // Credibility line
-  y += btnH + 16;
-  doc.setFontSize(8);
-  doc.setFont(SANS, 'normal');
-  doc.setTextColor(120, 120, 140);
-  doc.text('Trusted by professionals at EQT, Carlyle, Coller Capital, and more', pw / 2, y, { align: 'center' });
 
   // Footer
   doc.setFontSize(7);
