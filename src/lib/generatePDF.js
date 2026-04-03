@@ -623,7 +623,7 @@ function drawCtaPage(doc, logo) {
   doc.setFont(SANS, 'bold');
   doc.setTextColor(200, 200, 210);
   const subLines2 = doc.splitTextToSize(
-    'We only work with 10 individuals a quarter to ensure we give the depth and quality for behaviour change.',
+    'We only work with 10 individuals a quarter to ensure we give the depth and quality for change.',
     pw * 0.6,
   );
   doc.text(subLines2, pw / 2, y, { align: 'center' });

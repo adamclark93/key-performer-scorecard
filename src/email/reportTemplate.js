@@ -196,7 +196,7 @@ export function buildReportEmail(userData, result, pdfUrl) {
               </tr>
             </table>
             <p style="font-size:13px;color:#999;font-style:italic;margin-top:16px;">
-              We only work with 10 individuals a quarter to ensure we give the depth and quality for genuine change.
+              We only work with 10 individuals a quarter.
             </p>
           </td>
         </tr>
