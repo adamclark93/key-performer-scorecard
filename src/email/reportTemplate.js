@@ -195,6 +195,9 @@ export function buildReportEmail(userData, result, pdfUrl) {
                 </td>
               </tr>
             </table>
+            <p style="font-size:13px;color:#999;font-style:italic;margin-top:16px;">
+              We only work with 10 individuals a quarter to ensure we give the depth and quality for genuine change.
+            </p>
           </td>
         </tr>
       </table>
