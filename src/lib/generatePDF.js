@@ -145,7 +145,8 @@ const dimContent = {
     what: [
       'Progress captures your career momentum and how your organisation recognises your contribution. Title, compensation, and scope are the visible markers. But what Progress really measures is whether the people who matter see you as someone on an upward trajectory.',
       'Research on career advancement suggests that the professionals who progress fastest are not always the strongest technical performers. They are the ones whose contribution is most legible to decision-makers, and who manage that legibility actively rather than assuming it takes care of itself.',
-      'The professionals who build the most durable careers eventually become multipliers. They create genuine value for others without depleting themselves, and attract the sponsorship that individual performance alone cannot generate. The leaders who build the strongest teams make honest challenge feel safe rather than costly. Teams with high psychological safety are more likely to speak up, build stronger and more innovative ideas.',
+      'The professionals who build the most durable careers eventually become multipliers. They create genuine value for others without depleting themselves, and attract the sponsorship that individual performance alone cannot generate.',
+      'The leaders who build the strongest teams make honest challenge feel safe rather than costly. Teams with high psychological safety are more likely to speak up, build stronger and more innovative ideas.',
     ],
     keyQuestion: 'Has your recognition kept pace with your actual contribution? And are you thinking about the leader you are becoming, not just the role you are moving towards?',
     tips: [
