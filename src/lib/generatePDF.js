@@ -89,7 +89,7 @@ const dimContent = {
     what: [
       'Perspective measures how clearly you understand where you produce value and how ruthlessly you protect time for it. The constraint in most professional environments is not effort - it is attention.',
       'Research suggests a small fraction of activities drives the majority of outcomes. The challenge is that most professionals know this and do not live it.',
-      'Research on attention residue adds a harder edge: switching between tasks leaves a cognitive trace that degrades performance on the next one. Fragmented days are not just frustrating, they are measurably costly.',
+      'Research on attention residue suggests switching between tasks leaves a cognitive trace that degrades performance on the following task.',
       'As AI takes on more analytical and process-driven work, the premium on human judgement and strategic clarity is rising. Knowing exactly where your irreplaceable value sits, and protecting time for it, is no longer just good practice. It is the job.',
     ],
     keyQuestion: 'If a senior partner reviewed how you spent last week, not your outputs but your actual time, would they see someone operating at the top of their value chain?',
@@ -145,7 +145,7 @@ const dimContent = {
       'Progress captures your career momentum and how your organisation recognises your contribution. Title, compensation, and scope are the visible markers. But what Progress really measures is whether the people who matter see you as someone on an upward trajectory.',
       'Research on career advancement suggests that the professionals who progress fastest are not always the strongest technical performers. They are the ones whose contribution is most legible to decision-makers, and who manage that legibility actively rather than assuming it takes care of itself.',
       'The professionals who build the most durable careers eventually become multipliers. They create genuine value for others without depleting themselves, and attract the sponsorship that individual performance alone cannot generate.',
-      'The leaders who build the strongest teams make honest challenge feel safe rather than costly. Teams with high psychological safety are more likely to speak up, build stronger and more innovative ideas.',
+      'The leaders who build the strongest teams make honest challenge feel safe rather than costly. Teams with high psychological safety speak up more. They catch problems earlier, challenge assumptions faster, and make better decisions in the end.',
     ],
     keyQuestion: 'Has your recognition kept pace with your actual contribution? And are you thinking about the leader you are becoming, not just the role you are moving towards?',
     tips: [
