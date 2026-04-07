@@ -123,7 +123,7 @@ const dimContent = {
     tips: [
       'Schedule fifteen minutes with one senior person outside your immediate team and use it to ask a genuine question about their work, not to present yours. Showing genuine interest in the other person builds trust faster than presenting your own credentials.',
       'Rate yourself honestly on the two dimensions that research suggests drive professional influence: warmth and competence. Most professionals in this industry over-index on one at the expense of the other. Identify which, then work on it deliberately.',
-      'Block a fixed weekly slot for business development and external relationship activity. Research suggests that scheduling a specific time more than doubles follow-through compared to intention alone.',
+      'Block a fixed weekly slot for business development and external relationship activity. Research suggests that scheduling a specific time significantly increases follow-through compared to intention alone.',
     ],
   },
   performance: {
