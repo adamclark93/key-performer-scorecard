@@ -121,7 +121,7 @@ const dimContent = {
     ],
     keyQuestion: 'Internally: would a Partner or MD name you among their most trusted people? Externally: does the market know who you are and what you stand for?',
     tips: [
-      'Schedule fifteen minutes with one senior person outside your immediate team and use it to ask a genuine question about their work, not to present yours. Research on trust-building suggests interest in the other person compounds faster than self-presentation.',
+      'Schedule fifteen minutes with one senior person outside your immediate team and use it to ask a genuine question about their work, not to present yours. Showing genuine interest in the other person builds trust faster than presenting your own credentials.',
       'Rate yourself honestly on the two dimensions that research suggests drive professional influence: warmth and competence. Most professionals in this industry over-index on one at the expense of the other. Identify which, then work on it deliberately.',
       'Block a fixed weekly slot for business development and external relationship activity. Research suggests that scheduling a specific time more than doubles follow-through compared to intention alone.',
     ],
