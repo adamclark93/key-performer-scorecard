@@ -130,7 +130,7 @@ const dimContent = {
     what: [
       'Performance reflects whether you actually move outcomes. Not whether you complete tasks, but whether your involvement makes a material difference to what gets decided or delivered. In demanding environments it is measured by whether people seek you out when something difficult needs to happen.',
       'Research suggests what separates the best is not talent or experience but the quality of deliberate practice. Professionals who perform best in critical moments do not rise to the occasion. They fall to the level of their preparation.',
-      'Emotion is also a direct performance variable. Neurological research suggests that emotional processing is not separate from good decision-making. It is part of it. Reframing a difficult situation before the stress response sets in, rather than suppressing it after, produces better decisions and preserves the cognitive resources needed to make them.',
+      'Emotion is also a direct performance variable. Research suggests that emotional processing is not separate from good decision-making. It is part of it. Reframing how you interpret stress and pressure determines whether it sharpens your thinking or degrades it.',
       'Confidence matters too. Research on feedback deprivation suggests that capable professionals systematically underestimate their own ability without regular external calibration. Frequent, specific feedback is the fix.',
     ],
     keyQuestion: 'At the last critical moment in your work, were you someone who shaped the outcome, or someone who was present for it?',
