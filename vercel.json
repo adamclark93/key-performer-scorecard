@@ -1,5 +1,9 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    { "path": "/api/cron/day7-email", "schedule": "0 8 * * *" },
+    { "path": "/api/cron/day14-email", "schedule": "0 8 * * *" }
   ]
 }

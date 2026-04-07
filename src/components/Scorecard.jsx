@@ -31,7 +31,7 @@ function IntroScreen({ onStart }) {
     {
       name: 'Samantha M.',
       role: 'Principal',
-      company: 'AlpInvest Carlyle',
+      company: 'Carlyle AlpInvest',
       quote: 'The use of data and science, combined with her private equity background, made this feel different. Would strongly recommend.',
       img: '/samantha.jpg',
     },
@@ -145,7 +145,7 @@ function LeadScreen({ onSubmit }) {
     onSubmit(form);
   }
 
-  const jobLevels = ['Analyst / Associate', 'Manager / Senior Manager', 'Vice President', 'Director/Principal', 'Partner', 'C-Suite', 'Founder'];
+  const jobLevels = ['Analyst / Associate', 'Manager / Senior Manager', 'Vice President', 'Director / Principal', 'Partner', 'C-Suite', 'Founder'];
   const industries = ['Private Equity', 'Private Credit','Venture Capital', 'Asset Management','Investment Banking', 'Corporate Finance', 'Accounting & Audit', 'Other Financial Services', 'Strategy & Management Consulting', 'Legal', 'Technology & Software', 'Healthcare & Life Sciences','Other'];
 
   return (

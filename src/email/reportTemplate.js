@@ -170,7 +170,7 @@ export function buildReportEmail(userData, result, pdfUrl) {
               style="border-radius:50%;display:block;margin:0 auto 12px;"
             />
             <div style="font-size:13px;font-weight:bold;color:#111;margin-bottom:2px;">Emily Cook</div>
-            <div style="font-size:12px;color:#888;letter-spacing:1px;text-transform:uppercase;">Head Performance Coach, FOUND</div>
+            <div style="font-size:12px;color:#888;letter-spacing:1px;text-transform:uppercase;">Performance Coach, FOUND</div>
           </td>
         </tr>
         <tr>

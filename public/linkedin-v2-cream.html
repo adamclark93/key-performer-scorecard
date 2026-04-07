@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 627px; overflow: hidden; font-family: 'DM Sans', sans-serif; }
+
+  .card { width: 1200px; height: 627px; background: #f1ece4; position: relative; display: flex; overflow: hidden; }
+
+  .content { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 50px 65px; width: 52%; }
+
+  .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+  .logo-img { height: 38px; display: block; }
+  .badge { font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: rgba(45,45,45,0.4); font-weight: 700; padding-left: 18px; border-left: 1px solid rgba(45,45,45,0.15); line-height: 1.4; }
+
+  .headline { font-family: 'Instrument Serif', serif; font-size: 82px; font-weight: 400; color: #2d2d2d; line-height: 0.96; letter-spacing: -3px; margin-bottom: 28px; }
+  .headline em { color: #ff2846; font-style: italic; }
+
+  .subline { font-size: 21px; color: rgba(45,45,45,0.5); line-height: 1.5; margin-bottom: 10px; }
+  .credibility { font-size: 16px; color: rgba(45,45,45,0.35); margin-top: 4px; }
+  .credibility strong { color: rgba(45,45,45,0.55); }
+
+  .right-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; }
+
+  .quadrant-deco { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .q-cell { width: 210px; height: 160px; border-radius: 14px; display: flex; flex-direction: column; justify-content: center; padding: 24px 26px; border: 1px solid rgba(45,45,45,0.08); background: rgba(255,255,255,0.5); }
+  .q-cell.active { border: 3px solid #ff2846; background: rgba(255,40,70,0.08); }
+
+  .q-label { font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(45,45,45,0.2); }
+  .q-cell.active .q-label { color: #ff2846; font-size: 17px; }
+
+  .q-dot { width: 14px; height: 14px; border-radius: 50%; background: #ff2846; margin-top: 14px; }
+
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 28px; border: 1.5px solid #ff2846; border-radius: 8px; font-size: 16px; font-weight: 700; color: #2d2d2d; letter-spacing: 0.5px; width: fit-content; }
+  .cta-arrow { color: #ff2846; font-size: 18px; }
+
+  .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: #ff2846; z-index: 3; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="content">
+    <div class="logo-row">
+      <img class="logo-img" src="/found-logo.png" alt="FOUND" />
+      <span class="badge">Key Performer Scorecard</span>
+    </div>
+    <h1 class="headline">Find out if you're<br/>a <em>key performer</em><br/>at work</h1>
+    <p class="subline">25 research-based questions. Instant results.<br/>Receive a free tailored report.</p>
+    <div class="cta-btn">Take the Assessment <span class="cta-arrow">→</span></div>
+  </div>
+  <div class="right-panel">
+    <div class="quadrant-deco">
+      <div class="q-cell"><span class="q-label">Emerging</span></div>
+      <div class="q-cell active"><span class="q-label">Key Performer</span><div class="q-dot"></div></div>
+      <div class="q-cell"><span class="q-label">At Risk</span></div>
+      <div class="q-cell"><span class="q-label">Workhorse</span></div>
+    </div>
+  </div>
+  <div class="bottom-bar"></div>
+</div>
+</body>
+</html>
