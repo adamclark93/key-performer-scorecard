@@ -136,7 +136,7 @@ const dimContent = {
     keyQuestion: 'At the last critical moment in your work, were you someone who shaped the outcome, or someone who was present for it?',
     tips: [
       'Before any important meeting or decision, run a pre-mortem. Assume it has gone badly and work backwards: what went wrong and why? Research suggests this surfaces blind spots and failure modes that forward planning misses, and leads to materially better outcomes.',
-      'Build a brief pre-performance routine before anything important. Research suggests that reframing pressure as opportunity before the stress response sets in, rather than suppressing it after, produces measurably better decisions and clearer thinking.',
+      'Build a brief pre-performance routine before anything important. Research suggests that reframing stress as a functional signal rather than a threat shifts your physiological response and preserves the cognitive capacity you need to perform.',
       'After every important meeting, ask one person you respect: "What is one thing I could have done better?" Specific, immediate feedback is the primary mechanism through which performance improves. Most professionals do not build this infrastructure and pay for it slowly.',
     ],
   },
