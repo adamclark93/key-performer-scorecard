@@ -87,70 +87,71 @@ function addPageHeader(doc, logo, onDark = false) {
 const dimContent = {
   perspective: {
     what: [
-      'Perspective measures how clearly you see where you create value, and how fiercely you protect time for it. In most professional environments, the constraint is not effort. It is attention.',
-      'Research suggests a small fraction of activities drives the majority of outcomes. Most professionals know this. Few live it.',
-      'As AI absorbs more analytical work, the premium on human judgement and strategic clarity is rising. Knowing where your irreplaceable value sits, and guarding time for it, is no longer good practice. It is the job.',
+      'Perspective measures how clearly you understand where you produce value and how ruthlessly you protect time for it. The constraint in most professional environments is not effort - it is attention.',
+      'Research suggests a small fraction of activities drives the majority of outcomes. The challenge is that most professionals know this and do not live it.',
+      'Research on attention residue adds a harder edge: switching between tasks leaves a cognitive trace that degrades performance on the next one. Fragmented days are not just frustrating, they are measurably costly.',
+      'As AI takes on more analytical and process-driven work, the premium on human judgement and strategic clarity is rising. Knowing exactly where your irreplaceable value sits, and protecting time for it, is no longer just good practice. It is the job.',
     ],
     keyQuestion: 'If a senior partner reviewed how you spent last week, not your outputs but your actual time, would they see someone operating at the top of their value chain?',
     tips: [
-      'Audit your time for five days before changing anything else. Categorise every hour as high-leverage, necessary, or low-value. Most professionals are surprised by what they find.',
-      'Ask the most senior person who evaluates your work: "What is the highest-value thing I could be spending more time on?" Their answer will almost certainly differ from how you are currently spending your week. That gap is the work.',
-      'Write down your top priorities at the start of each day. Review them at the end. If they did not get done, identify what displaced them. The pattern matters more than any time management system.',
+      'Do a five-day time audit before you change anything else. Categorise every hour as high-leverage, necessary, or low-value. Most professionals are surprised by what they find.',
+      'Ask the most senior person who evaluates your work: "What is the highest-value thing I could be spending more time on?" Their answer will almost certainly differ from how you are currently allocating your week. That gap is the work.',
+      'At the start of each day, write down your top priorities. At the end of the day, review whether they were completed. If not, identify exactly what displaced them. The pattern that emerges is more useful than any time management system.',
     ],
   },
   pace: {
     what: [
-      'Pace is the intrinsic drive you bring to your work and your ability to sustain it. Not about hours. About whether you are seeking harder problems, building new capability, and holding the intensity that separates people building careers from people maintaining them.',
-      'Research on motivation suggests two forms. Autonomous motivation: doing something because it genuinely matters to you. Controlled motivation: driven by external pressure. People with high autonomous motivation outperform over time and are more often identified as future leaders.',
-      'Sustained pace also requires deliberate recovery. Research suggests pressure without recovery does not build resilience. It produces gradual degradation. The professionals with the longest, strongest careers manage their energy as deliberately as their time.',
+      'Pace captures the intrinsic drive you bring to your work and your ability to sustain it. It is not about hours. It is about whether you are seeking harder problems, building new capability, and maintaining the intensity that separates people building careers from people maintaining them.',
+      'Research on motivation distinguishes between autonomous motivation, doing something because it genuinely matters to you, and controlled motivation, driven by external pressure alone. Professionals with high autonomous motivation consistently outperform over time and are more frequently identified as future leaders.',
+      'Sustained Pace also requires deliberate recovery. Research on chronic stress and cognitive performance suggests that pressure without recovery does not build resilience. It produces gradual degradation. The professionals with the longest and strongest careers manage their energy as deliberately as their time.',
     ],
     keyQuestion: 'Are you building for the long game, or running at a pace that will be hard to sustain for the next five years?',
     tips: [
       'Identify the stretch opportunity you have been hesitant to raise your hand for and make a specific proposal for owning part of it. Leading the AI workstream, joining an employee resource group, taking on a cross-functional initiative. Ambition without a concrete ask is invisible.',
-      'Build recovery into your structure as deliberately as your schedule. Block it in the diary. If it is not scheduled, it will not happen.',
+      'Build recovery into your structure as deliberately as you build your schedule. Research suggests pressure without recovery does not build resilience. It produces gradual degradation.',
       'Implement a shutdown routine. Take five minutes at the end of each workday to brain dump your to-dos, what got done, and when you will tackle the next priorities. Research suggests this reduces cognitive load in the evenings and meaningfully improves the quality of recovery.',
     ],
   },
   profile: {
     what: [
-      'Profile has two dimensions, both critical and routinely neglected. Internal profile: how visible and trusted you are with the people who decide your career. External profile: how known and credible you are outside the organisation.',
-      'Research suggests professionals with strong internal visibility are promoted faster and given more consequential work earlier, independent of raw performance. The decisions that shape careers happen in rooms you are never in. Internal profile decides whether your name comes up.',
-      'External profile is built through genuine relationships, a clear point of view, and consistent presence in the right conversations. The strongest reputations combine warmth and competence. That combination is learnable.',
-      'The leaders others genuinely trust are the ones who contain pressure rather than transmit it. They absorb anxiety and return clarity. It is a skill, not a personality type.',
+      'Profile has two dimensions that are equally important and routinely neglected. Internal profile is how visible and trusted you are with the people who make decisions about your career. External profile is how known and credible you are outside the organisation.',
+      'Research on organisational networks suggests that professionals with strong internal visibility are promoted faster and given more consequential work earlier, independent of raw performance. The decisions that shape careers are made in conversations you are never part of. Internal profile determines whether your name comes up.',
+      'External profile is built through genuine relationships, a clear point of view, and consistent presence in the right conversations over time. The professionals who build the strongest reputations combine warmth and competence. That combination is learnable.',
+      'The leaders others genuinely trust are the ones who contain pressure rather than transmit it. The professionals others gravitate towards absorb anxiety and return clarity. This is a skill, not a personality type. Business development is the structured expression of external profile. Scheduling specific time for it more than doubles follow-through.',
     ],
     keyQuestion: 'Internally: would a Partner or MD name you among their most trusted people? Externally: does the market know who you are and what you stand for?',
     tips: [
-      'Schedule fifteen minutes with one senior person outside your immediate team. Use it to ask a genuine question about their work, not to present yours. Interest in the other person compounds faster than self-presentation.',
-      'Rate yourself honestly on the two dimensions that drive professional influence: warmth and competence. Most professionals over-index on one at the expense of the other. Identify which, then work on it deliberately.',
-      'Block a fixed weekly slot for business development and external relationship activity. Scheduling specific time more than doubles follow-through compared to intention alone.',
+      'Schedule fifteen minutes with one senior person outside your immediate team and use it to ask a genuine question about their work, not to present yours. Research on trust-building suggests interest in the other person compounds faster than self-presentation.',
+      'Rate yourself honestly on the two dimensions that research suggests drive professional influence: warmth and competence. Most professionals in this industry over-index on one at the expense of the other. Identify which, then work on it deliberately.',
+      'Block a fixed weekly slot for business development and external relationship activity. Research suggests that scheduling a specific time more than doubles follow-through compared to intention alone.',
     ],
   },
   performance: {
     what: [
-      'Performance is whether you actually move outcomes. Not whether you complete tasks, but whether your involvement materially changes what gets decided or delivered. In demanding environments, it is measured by whether people seek you out when something difficult needs to happen.',
-      'Research suggests what separates the best is not talent or experience, but the quality of their preparation. Professionals who perform best in critical moments do not rise to the occasion. They fall to the level of their practice.',
-      'Emotion is a direct performance variable. Neurological research suggests emotional processing is not separate from good decision-making. It is part of it. Reframing pressure before the stress response sets in, rather than suppressing it after, produces better decisions and preserves the cognitive resources to make them.',
+      'Performance reflects whether you actually move outcomes. Not whether you complete tasks, but whether your involvement makes a material difference to what gets decided or delivered. In demanding environments it is measured by whether people seek you out when something difficult needs to happen.',
+      'Research suggests what separates the best is not talent or experience but the quality of deliberate practice. Professionals who perform best in critical moments do not rise to the occasion. They fall to the level of their preparation.',
+      'Emotion is also a direct performance variable. Neurological research suggests that emotional processing is not separate from good decision-making. It is part of it. Reframing a difficult situation before the stress response sets in, rather than suppressing it after, produces better decisions and preserves the cognitive resources needed to make them.',
+      'Confidence matters too. Research on feedback deprivation suggests that capable professionals systematically underestimate their own ability without regular external calibration. Frequent, specific feedback is the fix.',
       'As AI takes on more analytical work, judgement becomes the differentiator. That cannot be delegated. The professionals who matter most in the next decade will be the ones who develop the quality of their thinking, not just the breadth of their knowledge.',
     ],
     keyQuestion: 'At the last critical moment in your work, were you someone who shaped the outcome, or someone who was present for it?',
     tips: [
-      'Before any important meeting or decision, run a pre-mortem. Assume it has gone badly and work backwards: what went wrong and why? Research suggests this surfaces blind spots that forward planning misses.',
-      'Build a brief pre-performance routine before anything high-stakes. Reframing pressure as opportunity before the stress response sets in produces clearer thinking than suppressing it after.',
-      'After every important meeting, ask one person you respect: "What is one thing I could have done better?" Specific, immediate feedback is how performance compounds. Most professionals never build this habit and pay for it slowly.',
+      'Before any important meeting or decision, run a pre-mortem. Assume it has gone badly and work backwards: what went wrong and why? Research suggests this surfaces blind spots and failure modes that forward planning misses, and leads to materially better outcomes.',
+      'Build a brief pre-performance routine before anything important. Research suggests that reframing pressure as opportunity before the stress response sets in, rather than suppressing it after, produces measurably better decisions and clearer thinking.',
+      'After every important meeting, ask one person you respect: "What is one thing I could have done better?" Specific, immediate feedback is the primary mechanism through which performance improves. Most professionals do not build this infrastructure and pay for it slowly.',
     ],
   },
   progress: {
     what: [
-      'Progress captures your career momentum and how your organisation recognises your contribution. Title, compensation, and scope are the visible markers. What it really measures is whether the people who matter see you as someone on an upward trajectory.',
-      'Research suggests the professionals who progress fastest are not always the strongest technical performers. They are the ones whose contribution is most legible to decision-makers, and who manage that legibility actively rather than assuming it takes care of itself.',
-      'The most durable careers eventually become multipliers. They create genuine value for others without depleting themselves, and attract the sponsorship that individual performance alone cannot generate.',
-      'The leaders who build the strongest teams make honest challenge feel safe rather than costly. That reputation, once established, compounds.',
+      'Progress captures your career momentum and how your organisation recognises your contribution. Title, compensation, and scope are the visible markers. But what Progress really measures is whether the people who matter see you as someone on an upward trajectory.',
+      'Research on career advancement suggests that the professionals who progress fastest are not always the strongest technical performers. They are the ones whose contribution is most legible to decision-makers, and who manage that legibility actively rather than assuming it takes care of itself.',
+      'The professionals who build the most durable careers eventually become multipliers. They create genuine value for others without depleting themselves, and attract the sponsorship that individual performance alone cannot generate. The leaders who build the strongest teams make honest challenge feel safe rather than costly. Teams with high psychological safety are more likely to speak up, build stronger and more innovative ideas.',
     ],
     keyQuestion: 'Has your recognition kept pace with your actual contribution? And are you thinking about the leader you are becoming, not just the role you are moving towards?',
     tips: [
       'Keep a live document of outcomes you have driven, scope that has grown, and recognition you have received. When a promotion conversation happens, precision beats generality every time.',
       'Ask your manager directly: "What is the specific gap between where I am and what the next level requires?" Most organisations under-communicate this. Make the conversation happen rather than waiting for it.',
-      'Invest deliberately in one person more junior than you this quarter. Research suggests that being seen to develop others signals readiness for the next level more clearly than almost anything else.',
+      'Invest deliberately in one person more junior than you this quarter. Research on leadership suggests that being seen to develop others signals readiness for the next level more clearly than almost anything else.',
     ],
   },
 };
@@ -612,7 +613,7 @@ function drawCtaPage(doc, logo) {
   doc.setFont(SANS, 'normal');
   doc.setTextColor(200, 200, 210);
   const subLines1 = doc.splitTextToSize(
-    'Understanding your constraints is the first step. If you are interested in finding out how 1-1 coaching could help you get clear on what is next for you and help you get there, we\u2019d love to hear from you.',
+    'Understanding your constraints is the first step. If you are interested in finding out how you can get clear on what is next for you and help you get there, we\u2019d love to hear from you.',
     pw * 0.6,
   );
   doc.text(subLines1, pw / 2, y, { align: 'center' });
