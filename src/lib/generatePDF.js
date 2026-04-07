@@ -109,7 +109,7 @@ const dimContent = {
     tips: [
       'Identify the stretch opportunity you have been hesitant to raise your hand for and make a specific proposal for owning part of it. Leading the AI workstream, joining a firm committee, taking on a cross-portfolio initiative. Ambition without a concrete ask is invisible.',
       'Build recovery into your structure as deliberately as you build your schedule. Research on chronic stress is unambiguous: pressure without recovery does not build resilience. It produces gradual degradation.',
-      'Implement a shutdown routine. Take five minutes at the end of each workday to brain dump your to-dos, what got done, and when you will tackle the next priorities. Research shows this reduces cognitive load in the evenings and meaningfully improves the quality of recovery.',
+      'Implement a shutdown routine. Take five minutes at the end of each workday to brain dump your to-dos, what got done, and when you will tackle the next priorities. Research suggests this reduces cognitive load in the evenings and meaningfully improves the quality of recovery.',
     ],
   },
   profile: {
