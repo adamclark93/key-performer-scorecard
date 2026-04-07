@@ -430,7 +430,7 @@ function ResultsScreen({ userData, result }) {
         <div className="what-now-grid">
           <div className="what-now-card">
             <h3 className="what-now-card-title">Ready to become a Key Performer?</h3>
-            <p className="what-now-card-sub">The one thing that separates Key Performers from everyone else isn't talent or effort — it's taking action. We only work with 10 individuals a quarter to ensure we can provide the quality and depth required for change to happen.</p>
+            <p className="what-now-card-sub">The one thing that separates Key Performers from everyone else isn't talent or effort. It's taking action. We only work with 10 individuals a quarter to ensure we can provide the quality and depth required for change to happen.</p>
             <a className="btn-cta" href="https://calendly.com/found-performance/keyperformer" onClick={() => trackEvent('cta_calendly_clicked')}>
               Talk With Us About How We Can Help
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -438,7 +438,7 @@ function ResultsScreen({ userData, result }) {
           </div>
           <div className="what-now-card">
             <h3 className="what-now-card-title">Learn: The science of high performance</h3>
-            <p className="what-now-card-sub">Hear from FOUND Head Performance Coach Emily Cook and world-leading neuroscientist Dr Sarah McKay on what the research says about how high performers actually think and work.</p>
+            <p className="what-now-card-sub">Hear from FOUND Performance Coach Emily Cook and world-leading neuroscientist Dr Sarah McKay on what the research says about how high performers actually think and work.</p>
             <a className="btn-cta btn-cta-outline" href="https://www.youtube.com/watch?v=d0hXs_6SD-E" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('cta_interview_clicked')}>
               Watch Now
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
