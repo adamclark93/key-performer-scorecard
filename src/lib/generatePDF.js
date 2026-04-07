@@ -117,7 +117,7 @@ const dimContent = {
       'Profile has two dimensions that are equally important and routinely neglected. Internal profile is how visible and trusted you are with the people who make decisions about your career. External profile is how known and credible you are outside the organisation.',
       'Research on organisational networks suggests that professionals with strong internal visibility are promoted faster and given more consequential work earlier, independent of raw performance. The decisions that shape careers are made in conversations you are never part of. Internal profile determines whether your name comes up.',
       'External profile is built through genuine relationships, a clear point of view, and consistent presence in the right conversations over time. The professionals who build the strongest reputations combine warmth and competence. That combination is learnable.',
-      'The leaders others genuinely trust are the ones who contain pressure rather than transmit it. The professionals others gravitate towards absorb anxiety and return clarity. This is a skill, not a personality type. Business development is the structured expression of external profile. Scheduling specific time for it more than doubles follow-through.',
+      'The leaders others genuinely trust are the ones who contain pressure rather than transmit it. The professionals others gravitate towards absorb anxiety and return clarity. This is a skill, not a personality type.',
     ],
     keyQuestion: 'Internally: would a Partner or MD name you among their most trusted people? Externally: does the market know who you are and what you stand for?',
     tips: [
@@ -132,7 +132,6 @@ const dimContent = {
       'Research suggests what separates the best is not talent or experience but the quality of deliberate practice. Professionals who perform best in critical moments do not rise to the occasion. They fall to the level of their preparation.',
       'Emotion is also a direct performance variable. Neurological research suggests that emotional processing is not separate from good decision-making. It is part of it. Reframing a difficult situation before the stress response sets in, rather than suppressing it after, produces better decisions and preserves the cognitive resources needed to make them.',
       'Confidence matters too. Research on feedback deprivation suggests that capable professionals systematically underestimate their own ability without regular external calibration. Frequent, specific feedback is the fix.',
-      'As AI takes on more analytical work, judgement becomes the differentiator. That cannot be delegated. The professionals who matter most in the next decade will be the ones who develop the quality of their thinking, not just the breadth of their knowledge.',
     ],
     keyQuestion: 'At the last critical moment in your work, were you someone who shaped the outcome, or someone who was present for it?',
     tips: [
